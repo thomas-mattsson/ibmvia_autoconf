@@ -1,0 +1,1250 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Access Policies &mdash; ibmvia-autoconf  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            ibmvia-autoconf
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Example Verify Identity Access Configurations (Getting Started)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appliance.html">Appliance Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="container.html">Container Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="webseal.html">WebSEAL Reverse Proxy Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="access_control.html">Advanced Access Control Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="federations.html">Federations Configuration</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ibmvia-autoconf</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Access Policies</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/global_config.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <p id="global-config">The global configuration section documents configuration which is shared between the Access Control and Federation modules of Verify Identity Access. This
+includes Advanced Configuration Properties, HTTP template pages, JavaScript mapping rules, Point of Contact profiles, Access Policies and Server Connections.</p>
+<section id="access-policies">
+<h1>Access Policies<a class="headerlink" href="#access-policies" title="Link to this heading"></a></h1>
+<p>Access policies can be applied to the deployment types:</p>
+<ul class="simple">
+<li><p>SAML 2.0 identity provider federation</p></li>
+<li><p>SAML 2.0 service provider partner to an identity provider federation</p></li>
+<li><p>OpenID Connect and API Protection Definition</p></li>
+</ul>
+<dl class="py class">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.federation.FED_Configurator.Access_Policies">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.ibmvia_autoconf.federation.FED_Configurator.</span></span><span class="sig-name descname"><span class="pre">Access_Policies</span></span><a class="headerlink" href="#src.ibmvia_autoconf.federation.FED_Configurator.Access_Policies" title="Link to this definition"></a></dt>
+<dd><p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">access_policies</span><span class="p">:</span>
+<span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;MyNewAccessPolicy&quot;</span>
+  <span class="nb">type</span><span class="p">:</span> <span class="s2">&quot;JavaScript&quot;</span>
+  <span class="n">policy_file</span><span class="p">:</span> <span class="s2">&quot;path/to/policy.file&quot;</span>
+  <span class="n">category</span><span class="p">:</span> <span class="s2">&quot;OTP&quot;</span>
+</pre></div>
+</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.federation.FED_Configurator.Access_Policies.category">
+<span class="sig-name descname"><span class="pre">category</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#src.ibmvia_autoconf.federation.FED_Configurator.Access_Policies.category" title="Link to this definition"></a></dt>
+<dd><p>A grouping of related access polices. For example, category “OAUTH” identifies all the rules associated with the OAUTH flow. Maximum 256 bytes. Valid values are “InfoMap”, “AuthSVC”, “OAUTH”,”OTP”, “OIDC” and “SAML2_0”.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.federation.FED_Configurator.Access_Policies.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#src.ibmvia_autoconf.federation.FED_Configurator.Access_Policies.name" title="Link to this definition"></a></dt>
+<dd><p>A unique name for the access policy. Maximum of 256 bytes.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.federation.FED_Configurator.Access_Policies.policy_file">
+<span class="sig-name descname"><span class="pre">policy_file</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#src.ibmvia_autoconf.federation.FED_Configurator.Access_Policies.policy_file" title="Link to this definition"></a></dt>
+<dd><p>A file with the JavaScript content of the access policy.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.federation.FED_Configurator.Access_Policies.type">
+<span class="sig-name descname"><span class="pre">type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#src.ibmvia_autoconf.federation.FED_Configurator.Access_Policies.type" title="Link to this definition"></a></dt>
+<dd><p>System default type for each access policy. For example, “JavaScript”.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="attribute-sources">
+<h1>Attribute Sources<a class="headerlink" href="#attribute-sources" title="Link to this heading"></a></h1>
+<p>Identity attribute sources for federated identities.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.federation.FED_Configurator.Attribute_Sources">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.ibmvia_autoconf.federation.FED_Configurator.</span></span><span class="sig-name descname"><span class="pre">Attribute_Sources</span></span><a class="headerlink" href="#src.ibmvia_autoconf.federation.FED_Configurator.Attribute_Sources" title="Link to this definition"></a></dt>
+<dd><p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">attribute_sources</span><span class="p">:</span>
+<span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;username&quot;</span>
+  <span class="nb">type</span><span class="p">:</span> <span class="s2">&quot;credential&quot;</span>
+  <span class="n">value</span><span class="p">:</span> <span class="s2">&quot;PrincipalName&quot;</span>
+  <span class="n">properties</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">key</span><span class="p">:</span> <span class="s2">&quot;searchFilter&quot;</span>
+    <span class="n">value</span><span class="p">:</span> <span class="s2">&quot;(&amp;(ObjectClass=inetOrgPerson)(memberOf=dc=ibm,dc=com))&quot;</span>
+</pre></div>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.federation.FED_Configurator.Attribute_Sources.Attribute_Source">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Attribute_Source</span></span><a class="headerlink" href="#src.ibmvia_autoconf.federation.FED_Configurator.Attribute_Sources.Attribute_Source" title="Link to this definition"></a></dt>
+<dd><dl class="py class">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.federation.FED_Configurator.Attribute_Sources.Attribute_Source.Property">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Property</span></span><a class="headerlink" href="#src.ibmvia_autoconf.federation.FED_Configurator.Attribute_Sources.Attribute_Source.Property" title="Link to this definition"></a></dt>
+<dd><dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.federation.FED_Configurator.Attribute_Sources.Attribute_Source.Property.key">
+<span class="sig-name descname"><span class="pre">key</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#src.ibmvia_autoconf.federation.FED_Configurator.Attribute_Sources.Attribute_Source.Property.key" title="Link to this definition"></a></dt>
+<dd><p>The property key. Valid fields for LDAP include “serverConnection”, “scope”, “selector”, “searchFilter”, “baseDN”.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.federation.FED_Configurator.Attribute_Sources.Attribute_Source.Property.value">
+<span class="sig-name descname"><span class="pre">value</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#src.ibmvia_autoconf.federation.FED_Configurator.Attribute_Sources.Attribute_Source.Property.value" title="Link to this definition"></a></dt>
+<dd><p>The property value.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.federation.FED_Configurator.Attribute_Sources.Attribute_Source.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#src.ibmvia_autoconf.federation.FED_Configurator.Attribute_Sources.Attribute_Source.name" title="Link to this definition"></a></dt>
+<dd><p>The friendly name of the source attribute. It must be unique.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.federation.FED_Configurator.Attribute_Sources.Attribute_Source.properties">
+<span class="sig-name descname"><span class="pre">properties</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#src.ibmvia_autoconf.federation.FED_Configurator.Attribute_Sources.Attribute_Source.Property" title="src.ibmvia_autoconf.federation.FED_Configurator.Attribute_Sources.Attribute_Source.Property"><span class="pre">Property</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#src.ibmvia_autoconf.federation.FED_Configurator.Attribute_Sources.Attribute_Source.properties" title="Link to this definition"></a></dt>
+<dd><p>The properties associated with an attribute source.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.federation.FED_Configurator.Attribute_Sources.Attribute_Source.type">
+<span class="sig-name descname"><span class="pre">type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#src.ibmvia_autoconf.federation.FED_Configurator.Attribute_Sources.Attribute_Source.type" title="Link to this definition"></a></dt>
+<dd><p>The type of the attribute source. Valid types are:</p>
+<ul class="simple">
+<li><p>“credential”: The attribute is from the authenticated context.</p></li>
+<li><p>“value”: The attribute is plain text from the value parameter.</p></li>
+<li><p>“ldap”: The attribute is retrieved from an LDAP server.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.federation.FED_Configurator.Attribute_Sources.Attribute_Source.value">
+<span class="sig-name descname"><span class="pre">value</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#src.ibmvia_autoconf.federation.FED_Configurator.Attribute_Sources.Attribute_Source.value" title="Link to this definition"></a></dt>
+<dd><p>The value of the source attribute.
+Credential type: The name of a credential attribute from the authenticated context which contains the value.
+Value type: The plain text to be used as the source attribute value.
+LDAP type: The name of the LDAP attribute to be used.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.federation.FED_Configurator.Attribute_Sources.attribute_sources">
+<span class="sig-name descname"><span class="pre">attribute_sources</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#src.ibmvia_autoconf.federation.FED_Configurator.Attribute_Sources.Attribute_Source" title="src.ibmvia_autoconf.federation.FED_Configurator.Attribute_Sources.Attribute_Source"><span class="pre">Attribute_Source</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#src.ibmvia_autoconf.federation.FED_Configurator.Attribute_Sources.attribute_sources" title="Link to this definition"></a></dt>
+<dd><p>List of attribute sources to create or update.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="advanced-configuration-parameters">
+<h1>Advanced Configuration Parameters<a class="headerlink" href="#advanced-configuration-parameters" title="Link to this heading"></a></h1>
+<p>The Advanced Configuration Parameters entry is used to set module wide properties for authentication and authorization
+components. The list of available properties is dependant on the target version of Verify Identity Access being configured. Administrators
+are able to use the Verify Identity Access assigned identifier or the name of the property.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Advanced_Configuration">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.ibmvia_autoconf.access_control.AAC_Configurator.</span></span><span class="sig-name descname"><span class="pre">Advanced_Configuration</span></span><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Advanced_Configuration" title="Link to this definition"></a></dt>
+<dd><p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">advanced_configuration</span><span class="p">:</span>
+<span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;attributeCollection.authenticationContextAttributes&quot;</span>
+  <span class="n">value</span><span class="p">:</span> <span class="s2">&quot;resource,action,ac.uuid,header:userAgent,urn:ibm:demo:transferamount&quot;</span>
+<span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;mmfa.transactionArchival.maxPendingPerUser&quot;</span>
+  <span class="n">value</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span>
+</pre></div>
+</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Advanced_Configuration.id">
+<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Advanced_Configuration.id" title="Link to this definition"></a></dt>
+<dd><p>The Verify Identity Access assigned property id. Either the property ID or name must be defined.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Advanced_Configuration.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Advanced_Configuration.name" title="Link to this definition"></a></dt>
+<dd><p>The name of the advanced configuration property. Either the property ID or name must be defined.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Advanced_Configuration.value">
+<span class="sig-name descname"><span class="pre">value</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Advanced_Configuration.value" title="Link to this definition"></a></dt>
+<dd><p>The updated value of the advanced configuration property.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="http-template-files">
+<h1>HTTP Template Files<a class="headerlink" href="#http-template-files" title="Link to this heading"></a></h1>
+<p>This configuration option can be used to set files or directories containing HTML files which are compatible with the
+AAC and Federation templating engine. The directory structure of any directories to upload should follow the default
+top level directories. If you are defining a directory it should contain a trailing <code class="docutils literal notranslate"><span class="pre">/</span></code>.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Template_Files">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.ibmvia_autoconf.access_control.AAC_Configurator.</span></span><span class="sig-name descname"><span class="pre">Template_Files</span></span><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Template_Files" title="Link to this definition"></a></dt>
+<dd><p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">template_files</span><span class="p">:</span>
+<span class="o">-</span> <span class="n">aac</span><span class="o">/</span><span class="n">isva_template_files</span><span class="o">.</span><span class="n">zip</span>
+<span class="o">-</span> <span class="n">login</span><span class="o">.</span><span class="n">html</span>
+<span class="o">-</span> <span class="mi">2</span><span class="n">fa</span><span class="o">.</span><span class="n">html</span>
+</pre></div>
+</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Template_Files.template_files">
+<span class="sig-name descname"><span class="pre">template_files</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Template_Files.template_files" title="Link to this definition"></a></dt>
+<dd><p>List of files or zip-files to upload as HTML template pages. Path to files can be relative to the <code class="docutils literal notranslate"><span class="pre">IVIA_CONFIG_BASE</span></code> property or fully-qualified file paths.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="javascript-mapping-rules">
+<h1>JavaScript Mapping Rules<a class="headerlink" href="#javascript-mapping-rules" title="Link to this heading"></a></h1>
+<p>This configuration option can be used to upload different types or categories of JavaScript Mapping Rules. These rules
+are typically used to implement custom business logic for a particular integration requirement.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Some types of mapping rules are defined elsewhere, eg OIDC pre/post token mapping rules must be defined with
+the OIDC definition they are associated with.</p>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Mapping_Rules">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.ibmvia_autoconf.access_control.AAC_Configurator.</span></span><span class="sig-name descname"><span class="pre">Mapping_Rules</span></span><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Mapping_Rules" title="Link to this definition"></a></dt>
+<dd><p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mapping_rules</span><span class="p">:</span>
+<span class="o">-</span> <span class="nb">type</span><span class="p">:</span> <span class="n">SAML2</span>
+  <span class="n">files</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">saml20</span><span class="o">.</span><span class="n">js</span>
+  <span class="o">-</span> <span class="n">adv_saml20</span><span class="o">.</span><span class="n">js</span>
+<span class="o">-</span> <span class="nb">type</span><span class="p">:</span> <span class="n">InfoMap</span>
+  <span class="n">files</span><span class="p">:</span>
+   <span class="o">-</span> <span class="n">mapping_rules</span><span class="o">/</span><span class="n">basic_user_email_otp</span><span class="o">.</span><span class="n">js</span>
+   <span class="o">-</span> <span class="n">mapping_rules</span><span class="o">/</span><span class="n">basic_user_sms_otp</span><span class="o">.</span><span class="n">js</span>
+   <span class="o">-</span> <span class="n">mapping_rules</span><span class="o">/</span><span class="n">ad_user_mfa</span><span class="o">.</span><span class="n">js</span>
+<span class="o">-</span> <span class="nb">type</span><span class="p">:</span> <span class="n">Fido2</span>
+  <span class="n">files</span><span class="p">:</span>
+   <span class="o">-</span> <span class="n">mediator</span><span class="o">.</span><span class="n">js</span>
+</pre></div>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Mapping_Rules.Mapping_Rule">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Mapping_Rule</span></span><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Mapping_Rules.Mapping_Rule" title="Link to this definition"></a></dt>
+<dd><dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Mapping_Rules.Mapping_Rule.files">
+<span class="sig-name descname"><span class="pre">files</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Mapping_Rules.Mapping_Rule.files" title="Link to this definition"></a></dt>
+<dd><p>List of files or directories to upload as JavaScript mapping rules. Path to files can be relative to the <code class="docutils literal notranslate"><span class="pre">IVIA_CONFIG_BASE</span></code> property or fully-qualified file paths.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Mapping_Rules.Mapping_Rule.type">
+<span class="sig-name descname"><span class="pre">type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Mapping_Rules.Mapping_Rule.type" title="Link to this definition"></a></dt>
+<dd><p>Type of JavaScript rule to create. Valid values include <code class="docutils literal notranslate"><span class="pre">InfoMap</span></code>, <code class="docutils literal notranslate"><span class="pre">AuthSVC</span></code>, <code class="docutils literal notranslate"><span class="pre">FIDO2</span></code>, <code class="docutils literal notranslate"><span class="pre">OAUTH</span></code>, <code class="docutils literal notranslate"><span class="pre">OTP</span></code>, <code class="docutils literal notranslate"><span class="pre">OIDC</span></code> and <code class="docutils literal notranslate"><span class="pre">SAML2_0</span></code>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Mapping_Rules.mapping_rules">
+<span class="sig-name descname"><span class="pre">mapping_rules</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Mapping_Rules.Mapping_Rule" title="src.ibmvia_autoconf.access_control.AAC_Configurator.Mapping_Rules.Mapping_Rule"><span class="pre">Mapping_Rule</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Mapping_Rules.mapping_rules" title="Link to this definition"></a></dt>
+<dd><p>List of mapping rule types/files to upload.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="point-of-contact">
+<h1>Point Of Contact<a class="headerlink" href="#point-of-contact" title="Link to this heading"></a></h1>
+<p>The point of contact profile is used to control how the runtime server communicates with the point of contact server (usually WebSEAL).</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.federation.FED_Configurator.Point_Of_Contact_Profiles">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.ibmvia_autoconf.federation.FED_Configurator.</span></span><span class="sig-name descname"><span class="pre">Point_Of_Contact_Profiles</span></span><a class="headerlink" href="#src.ibmvia_autoconf.federation.FED_Configurator.Point_Of_Contact_Profiles" title="Link to this definition"></a></dt>
+<dd><p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">point_of_contact</span><span class="p">:</span>
+  <span class="n">profiles</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;MyPoCProfile&quot;</span>
+    <span class="n">description</span><span class="p">:</span> <span class="s2">&quot;MyPoCProfile description&quot;</span>
+    <span class="n">authenticate_callbacks</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">index</span><span class="p">:</span> <span class="mi">0</span>
+      <span class="n">module_reference_id</span><span class="p">:</span> <span class="s2">&quot;websealPocAuthenticateCallback&quot;</span>
+      <span class="n">parameters</span><span class="p">:</span>
+      <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;authentication.level&quot;</span>
+        <span class="n">value</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span>
+    <span class="n">sign_in_callbacks</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">index</span><span class="s2">&quot;: 0</span>
+      <span class="n">module_reference_id</span><span class="p">:</span> <span class="s2">&quot;websealPocSignInCallback&quot;</span>
+      <span class="n">parameters</span><span class="p">:</span>
+      <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;fim.user.response.header.name&quot;</span>
+            <span class="n">value</span><span class="p">:</span> <span class="s2">&quot;am-fim-eai-user-id&quot;</span>
+    <span class="n">local_id_callbacks</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">index</span><span class="p">:</span> <span class="mi">0</span>
+      <span class="n">module_reference_id</span><span class="p">:</span> <span class="s2">&quot;websealPocLocalIdentityCallback&quot;</span>
+      <span class="n">parameters</span><span class="p">:</span>
+      <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;fim.cred.request.header.name&quot;</span>
+        <span class="n">value</span><span class="p">:</span> <span class="s2">&quot;iv-creds&quot;</span>
+    <span class="n">sign_out_callbacks</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">index</span><span class="p">:</span> <span class="mi">0</span>
+      <span class="n">module_reference_id</span><span class="p">:</span> <span class="s2">&quot;websealPocSignOutCallback&quot;</span>
+      <span class="n">parameters</span><span class="p">:</span>
+      <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;fim.user.session.id.request.header.name&quot;</span>
+            <span class="n">value</span><span class="p">:</span> <span class="s2">&quot;user_session_id&quot;</span>
+    <span class="n">authn_policy_callbacks</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">index</span><span class="p">:</span> <span class="mi">0</span>
+      <span class="n">module_reference_id</span><span class="p">:</span> <span class="s2">&quot;genericPocAuthnPolicyCallback&quot;</span>
+      <span class="n">parameters</span><span class="p">:</span>
+      <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;authentication.level&quot;</span>
+        <span class="n">value</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span>
+</pre></div>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.federation.FED_Configurator.Point_Of_Contact_Profiles.Point_Of_Contact_Profile">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Point_Of_Contact_Profile</span></span><a class="headerlink" href="#src.ibmvia_autoconf.federation.FED_Configurator.Point_Of_Contact_Profiles.Point_Of_Contact_Profile" title="Link to this definition"></a></dt>
+<dd><dl class="py class">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.federation.FED_Configurator.Point_Of_Contact_Profiles.Point_Of_Contact_Profile.Point_Of_Contact_Callback">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Point_Of_Contact_Callback</span></span><a class="headerlink" href="#src.ibmvia_autoconf.federation.FED_Configurator.Point_Of_Contact_Profiles.Point_Of_Contact_Profile.Point_Of_Contact_Callback" title="Link to this definition"></a></dt>
+<dd><dl class="py class">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.federation.FED_Configurator.Point_Of_Contact_Profiles.Point_Of_Contact_Profile.Point_Of_Contact_Callback.Point_Of_Contact_Parameter">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Point_Of_Contact_Parameter</span></span><a class="headerlink" href="#src.ibmvia_autoconf.federation.FED_Configurator.Point_Of_Contact_Profiles.Point_Of_Contact_Profile.Point_Of_Contact_Callback.Point_Of_Contact_Parameter" title="Link to this definition"></a></dt>
+<dd><dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.federation.FED_Configurator.Point_Of_Contact_Profiles.Point_Of_Contact_Profile.Point_Of_Contact_Callback.Point_Of_Contact_Parameter.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#src.ibmvia_autoconf.federation.FED_Configurator.Point_Of_Contact_Profiles.Point_Of_Contact_Profile.Point_Of_Contact_Callback.Point_Of_Contact_Parameter.name" title="Link to this definition"></a></dt>
+<dd><p>The name of the parameter.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.federation.FED_Configurator.Point_Of_Contact_Profiles.Point_Of_Contact_Profile.Point_Of_Contact_Callback.Point_Of_Contact_Parameter.value">
+<span class="sig-name descname"><span class="pre">value</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#src.ibmvia_autoconf.federation.FED_Configurator.Point_Of_Contact_Profiles.Point_Of_Contact_Profile.Point_Of_Contact_Callback.Point_Of_Contact_Parameter.value" title="Link to this definition"></a></dt>
+<dd><p>The value of the parameter.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.federation.FED_Configurator.Point_Of_Contact_Profiles.Point_Of_Contact_Profile.Point_Of_Contact_Callback.index">
+<span class="sig-name descname"><span class="pre">index</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#src.ibmvia_autoconf.federation.FED_Configurator.Point_Of_Contact_Profiles.Point_Of_Contact_Profile.Point_Of_Contact_Callback.index" title="Link to this definition"></a></dt>
+<dd><p>A number reflects the position in the callbacks array.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.federation.FED_Configurator.Point_Of_Contact_Profiles.Point_Of_Contact_Profile.Point_Of_Contact_Callback.module_reference_id">
+<span class="sig-name descname"><span class="pre">module_reference_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#src.ibmvia_autoconf.federation.FED_Configurator.Point_Of_Contact_Profiles.Point_Of_Contact_Profile.Point_Of_Contact_Callback.module_reference_id" title="Link to this definition"></a></dt>
+<dd><p>The module ID referenced in the callback. It must be one of the supported module IDs.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.federation.FED_Configurator.Point_Of_Contact_Profiles.Point_Of_Contact_Profile.Point_Of_Contact_Callback.parameters">
+<span class="sig-name descname"><span class="pre">parameters</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#src.ibmvia_autoconf.federation.FED_Configurator.Point_Of_Contact_Profiles.Point_Of_Contact_Profile.Point_Of_Contact_Callback.Point_Of_Contact_Parameter" title="src.ibmvia_autoconf.federation.FED_Configurator.Point_Of_Contact_Profiles.Point_Of_Contact_Profile.Point_Of_Contact_Callback.Point_Of_Contact_Parameter"><span class="pre">Point_Of_Contact_Parameter</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#src.ibmvia_autoconf.federation.FED_Configurator.Point_Of_Contact_Profiles.Point_Of_Contact_Profile.Point_Of_Contact_Callback.parameters" title="Link to this definition"></a></dt>
+<dd><p>The parameters used by the callback.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.federation.FED_Configurator.Point_Of_Contact_Profiles.Point_Of_Contact_Profile.authenticate_callbacks">
+<span class="sig-name descname"><span class="pre">authenticate_callbacks</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#src.ibmvia_autoconf.federation.FED_Configurator.Point_Of_Contact_Profiles.Point_Of_Contact_Profile.Point_Of_Contact_Callback" title="src.ibmvia_autoconf.federation.FED_Configurator.Point_Of_Contact_Profiles.Point_Of_Contact_Profile.Point_Of_Contact_Callback"><span class="pre">Point_Of_Contact_Callback</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#src.ibmvia_autoconf.federation.FED_Configurator.Point_Of_Contact_Profiles.Point_Of_Contact_Profile.authenticate_callbacks" title="Link to this definition"></a></dt>
+<dd><p>An array of callbacks for authentication.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.federation.FED_Configurator.Point_Of_Contact_Profiles.Point_Of_Contact_Profile.authn_policy_callbacks">
+<span class="sig-name descname"><span class="pre">authn_policy_callbacks</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#src.ibmvia_autoconf.federation.FED_Configurator.Point_Of_Contact_Profiles.Point_Of_Contact_Profile.Point_Of_Contact_Callback" title="src.ibmvia_autoconf.federation.FED_Configurator.Point_Of_Contact_Profiles.Point_Of_Contact_Profile.Point_Of_Contact_Callback"><span class="pre">Point_Of_Contact_Callback</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#src.ibmvia_autoconf.federation.FED_Configurator.Point_Of_Contact_Profiles.Point_Of_Contact_Profile.authn_policy_callbacks" title="Link to this definition"></a></dt>
+<dd><p>An array of callbacks for authentication policy.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.federation.FED_Configurator.Point_Of_Contact_Profiles.Point_Of_Contact_Profile.description">
+<span class="sig-name descname"><span class="pre">description</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#src.ibmvia_autoconf.federation.FED_Configurator.Point_Of_Contact_Profiles.Point_Of_Contact_Profile.description" title="Link to this definition"></a></dt>
+<dd><p>A description of the point of contact profile.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.federation.FED_Configurator.Point_Of_Contact_Profiles.Point_Of_Contact_Profile.local_id_callbacks">
+<span class="sig-name descname"><span class="pre">local_id_callbacks</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#src.ibmvia_autoconf.federation.FED_Configurator.Point_Of_Contact_Profiles.Point_Of_Contact_Profile.Point_Of_Contact_Callback" title="src.ibmvia_autoconf.federation.FED_Configurator.Point_Of_Contact_Profiles.Point_Of_Contact_Profile.Point_Of_Contact_Callback"><span class="pre">Point_Of_Contact_Callback</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#src.ibmvia_autoconf.federation.FED_Configurator.Point_Of_Contact_Profiles.Point_Of_Contact_Profile.local_id_callbacks" title="Link to this definition"></a></dt>
+<dd><p>An array of callbacks for local identity.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.federation.FED_Configurator.Point_Of_Contact_Profiles.Point_Of_Contact_Profile.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#src.ibmvia_autoconf.federation.FED_Configurator.Point_Of_Contact_Profiles.Point_Of_Contact_Profile.name" title="Link to this definition"></a></dt>
+<dd><p>A meaningful name to identify this point of contact profile.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.federation.FED_Configurator.Point_Of_Contact_Profiles.Point_Of_Contact_Profile.sign_in_callbacks">
+<span class="sig-name descname"><span class="pre">sign_in_callbacks</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#src.ibmvia_autoconf.federation.FED_Configurator.Point_Of_Contact_Profiles.Point_Of_Contact_Profile.Point_Of_Contact_Callback" title="src.ibmvia_autoconf.federation.FED_Configurator.Point_Of_Contact_Profiles.Point_Of_Contact_Profile.Point_Of_Contact_Callback"><span class="pre">Point_Of_Contact_Callback</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#src.ibmvia_autoconf.federation.FED_Configurator.Point_Of_Contact_Profiles.Point_Of_Contact_Profile.sign_in_callbacks" title="Link to this definition"></a></dt>
+<dd><p>An array of callbacks for sign in.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.federation.FED_Configurator.Point_Of_Contact_Profiles.Point_Of_Contact_Profile.sign_out_callbacks">
+<span class="sig-name descname"><span class="pre">sign_out_callbacks</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#src.ibmvia_autoconf.federation.FED_Configurator.Point_Of_Contact_Profiles.Point_Of_Contact_Profile.Point_Of_Contact_Callback" title="src.ibmvia_autoconf.federation.FED_Configurator.Point_Of_Contact_Profiles.Point_Of_Contact_Profile.Point_Of_Contact_Callback"><span class="pre">Point_Of_Contact_Callback</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#src.ibmvia_autoconf.federation.FED_Configurator.Point_Of_Contact_Profiles.Point_Of_Contact_Profile.sign_out_callbacks" title="Link to this definition"></a></dt>
+<dd><p>An array of callbacks for sign out.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.federation.FED_Configurator.Point_Of_Contact_Profiles.active_profile">
+<span class="sig-name descname"><span class="pre">active_profile</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#src.ibmvia_autoconf.federation.FED_Configurator.Point_Of_Contact_Profiles.active_profile" title="Link to this definition"></a></dt>
+<dd><p>The name of the Point of Contact profile which should be the active profile. Only one profile can be active at a time.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.federation.FED_Configurator.Point_Of_Contact_Profiles.profiles">
+<span class="sig-name descname"><span class="pre">profiles</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#src.ibmvia_autoconf.federation.FED_Configurator.Point_Of_Contact_Profiles.Point_Of_Contact_Profile" title="src.ibmvia_autoconf.federation.FED_Configurator.Point_Of_Contact_Profiles.Point_Of_Contact_Profile"><span class="pre">Point_Of_Contact_Profile</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#src.ibmvia_autoconf.federation.FED_Configurator.Point_Of_Contact_Profiles.profiles" title="Link to this definition"></a></dt>
+<dd><p>List of point of contact profiles to configure</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="server-connections">
+<h1>Server Connections<a class="headerlink" href="#server-connections" title="Link to this heading"></a></h1>
+<p>Server connections are used to connect to third party infrastructure such as LDAP registries, email servers, SMS servers, ect. These
+connections are used by other AAC components to provide authentication/authorization services.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.ibmvia_autoconf.access_control.AAC_Configurator.</span></span><span class="sig-name descname"><span class="pre">Server_Connections</span></span><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections" title="Link to this definition"></a></dt>
+<dd><p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>server_connections:
+- name: &quot;intent-svc&quot;
+  type: &quot;web_service&quot;
+  description: &quot;A connection to the intent service.&quot;
+  properties:
+    url: &quot;http://ibmsec.intent.svc:16080&quot;
+    user: &quot;&quot;
+    password: &quot;&quot;
+    ssl: false
+- name: &quot;Cloud Identity tenant connection&quot;
+  type: &quot;ci&quot;
+  description: &quot;A connection to the companion CI Tenant.&quot;
+  properties:
+    ci_tenant: !secret default/isva-secrets:ci_tenant
+    ci_client_id: !secret default/isva-secrets:ci_client_id
+    ci_client_secret: !secret default/isva-secrets:ci_client_secret
+    ssl_truststore: &quot;rt_profile_keys.kdb&quot;
+- name: &quot;Local LDAP connection&quot;
+  type: &quot;ldap&quot;
+  description: &quot;A connection to this ISAMs LDAP.&quot;
+  locked: false
+  properties:
+    hostname: ibmsec.ldap.domain
+    port: 636
+    bind_dn: &quot;cn=root,secAuthority=Default&quot;
+    bind_password: !secret default/isva-secrets:ldap_bind_secret
+    ssl: true
+    ssl_truststore: &quot;lmi_trust_store&quot;
+  - name: &quot;SCIM web service connection&quot;
+    type: &quot;web_service&quot;
+    description: &quot;A connection to this ISAMs SCIM server.&quot;
+    locked: false
+    properties:
+      url: https://ibmsec.runtime.svc
+      user: !secret default/isva-secrets:runtime_user
+      password: !secret default/isva-secrets:runtime_secret
+      ssl: true
+      key_file: &quot;rt_profile_keys.kdb&quot;
+</pre></div>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Server_Connection</span></span><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection" title="Link to this definition"></a></dt>
+<dd><dl class="py class">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.IbmsecVerifyConnection">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">IbmsecVerifyConnection</span></span><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.IbmsecVerifyConnection" title="Link to this definition"></a></dt>
+<dd><p>ci</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.IbmsecVerifyConnection.admin_host">
+<span class="sig-name descname"><span class="pre">admin_host</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.IbmsecVerifyConnection.admin_host" title="Link to this definition"></a></dt>
+<dd><p>The IBM Security Verify administration host to connect to.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.IbmsecVerifyConnection.authenticators_endpoint">
+<span class="sig-name descname"><span class="pre">authenticators_endpoint</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.IbmsecVerifyConnection.authenticators_endpoint" title="Link to this definition"></a></dt>
+<dd><p>The versioned endpoint for authenticator requests.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.IbmsecVerifyConnection.authnmethods_endpoint">
+<span class="sig-name descname"><span class="pre">authnmethods_endpoint</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.IbmsecVerifyConnection.authnmethods_endpoint" title="Link to this definition"></a></dt>
+<dd><p>The DEPRECATED versioned endpoint for authentication method requests.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.IbmsecVerifyConnection.authorize_endpoint">
+<span class="sig-name descname"><span class="pre">authorize_endpoint</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.IbmsecVerifyConnection.authorize_endpoint" title="Link to this definition"></a></dt>
+<dd><p>The versioned endpoint for authorization requests.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.IbmsecVerifyConnection.client_id">
+<span class="sig-name descname"><span class="pre">client_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.IbmsecVerifyConnection.client_id" title="Link to this definition"></a></dt>
+<dd><p>The client ID to authenticate to the IBM Security Verify tenant.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.IbmsecVerifyConnection.client_secret">
+<span class="sig-name descname"><span class="pre">client_secret</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.IbmsecVerifyConnection.client_secret" title="Link to this definition"></a></dt>
+<dd><p>The client secret to authenticate to the IBM Security Verify tenant.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.IbmsecVerifyConnection.factors_endpoint">
+<span class="sig-name descname"><span class="pre">factors_endpoint</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.IbmsecVerifyConnection.factors_endpoint" title="Link to this definition"></a></dt>
+<dd><p>The versioned endpoint for factors requests.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.IbmsecVerifyConnection.ssl">
+<span class="sig-name descname"><span class="pre">ssl</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.IbmsecVerifyConnection.ssl" title="Link to this definition"></a></dt>
+<dd><p>Controls whether SSL is used to establish the connection.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.IbmsecVerifyConnection.ssl_key_label">
+<span class="sig-name descname"><span class="pre">ssl_key_label</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.IbmsecVerifyConnection.ssl_key_label" title="Link to this definition"></a></dt>
+<dd><p>The name of the key which should be used during mutual authentication with the web server.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.IbmsecVerifyConnection.ssl_truststore">
+<span class="sig-name descname"><span class="pre">ssl_truststore</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.IbmsecVerifyConnection.ssl_truststore" title="Link to this definition"></a></dt>
+<dd><p>The key database to be used as an SSL truststore. This field is required when <code class="docutils literal notranslate"><span class="pre">ssl</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.IbmsecVerifyConnection.user_endpoint">
+<span class="sig-name descname"><span class="pre">user_endpoint</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.IbmsecVerifyConnection.user_endpoint" title="Link to this definition"></a></dt>
+<dd><p>The versioned endpoint for user requests.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.Java_Database_Connection">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Java_Database_Connection</span></span><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.Java_Database_Connection" title="Link to this definition"></a></dt>
+<dd><p>jdbc</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.Java_Database_Connection.age_timeout">
+<span class="sig-name descname"><span class="pre">age_timeout</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.Java_Database_Connection.age_timeout" title="Link to this definition"></a></dt>
+<dd><p>Amount of time before a physical connection can be discarded by pool maintenance. A value of <code class="docutils literal notranslate"><span class="pre">-1</span></code> disables this timeout. Specify a positive integer followed by a unit of time, which can be hours (h), minutes (m), or seconds (s). For example, specify 30 seconds as <code class="docutils literal notranslate"><span class="pre">30s</span></code>. You can include multiple values in a single entry. For example, <code class="docutils literal notranslate"><span class="pre">1m30s</span></code> is equivalent to 90 seconds. (Default value is <code class="docutils literal notranslate"><span class="pre">-1</span></code>)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.Java_Database_Connection.connection_purge_policy">
+<span class="sig-name descname"><span class="pre">connection_purge_policy</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.Java_Database_Connection.connection_purge_policy" title="Link to this definition"></a></dt>
+<dd><p>Specifies which connections to destroy when a stale connection is detected in a pool. Valid values include <code class="docutils literal notranslate"><span class="pre">EntirePool</span></code> (When a stale connection is detected, all connections in the pool are marked stale, and when no longer in use, are closed.) <code class="docutils literal notranslate"><span class="pre">FailingConnectionOnly</span></code> (When a stale connection is detected, only the connection which was found to be bad is closed.) <code class="docutils literal notranslate"><span class="pre">ValidateAllConnections</span></code> (When a stale connection is detected, connections are tested and those found to be bad are closed.) (Default value is <code class="docutils literal notranslate"><span class="pre">EntirePool</span></code>)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.Java_Database_Connection.connection_reap_time">
+<span class="sig-name descname"><span class="pre">connection_reap_time</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.Java_Database_Connection.connection_reap_time" title="Link to this definition"></a></dt>
+<dd><p>Amount of time between runs of the pool maintenance thread. A value of “-1” disables pool maintenance. Default value is <code class="docutils literal notranslate"><span class="pre">3m</span></code>.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.Java_Database_Connection.connection_timeout">
+<span class="sig-name descname"><span class="pre">connection_timeout</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.Java_Database_Connection.connection_timeout" title="Link to this definition"></a></dt>
+<dd><p>Amount of time after which a connection request times out. A value of <code class="docutils literal notranslate"><span class="pre">-1</span></code> disables this timeout. Specify a positive integer followed by a unit of time, which can be hours (h), minutes (m), or seconds (s). For example, specify 30 seconds as <code class="docutils literal notranslate"><span class="pre">30s</span></code>. You can include multiple values in a single entry. For example, <code class="docutils literal notranslate"><span class="pre">1m30s</span></code> is equivalent to 90 seconds. (Default value is <code class="docutils literal notranslate"><span class="pre">30s</span></code>)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.Java_Database_Connection.connections_per_thread">
+<span class="sig-name descname"><span class="pre">connections_per_thread</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.Java_Database_Connection.connections_per_thread" title="Link to this definition"></a></dt>
+<dd><p>Caches the specified number of connections for each thread.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.Java_Database_Connection.database_name">
+<span class="sig-name descname"><span class="pre">database_name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.Java_Database_Connection.database_name" title="Link to this definition"></a></dt>
+<dd><p>The name of the database to connect to. Only applicable for DB2 and PostgreSQL connections, this parameter is required for all DB2 and PostgreSQL connections.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.Java_Database_Connection.max_connections_per_thread">
+<span class="sig-name descname"><span class="pre">max_connections_per_thread</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.Java_Database_Connection.max_connections_per_thread" title="Link to this definition"></a></dt>
+<dd><p>Limits the number of open connections on each thread.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.Java_Database_Connection.max_idle_time">
+<span class="sig-name descname"><span class="pre">max_idle_time</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.Java_Database_Connection.max_idle_time" title="Link to this definition"></a></dt>
+<dd><p>Amount of time after which an unused or idle connection can be discarded during pool maintenance, if doing so does not reduce the pool below the minimum size. A value of <code class="docutils literal notranslate"><span class="pre">-1</span></code> disables this timeout. Specify a positive integer followed by a unit of time, which can be hours (h), minutes (m), or seconds (s). For example, specify 30 seconds as <code class="docutils literal notranslate"><span class="pre">30s</span></code>. You can include multiple values in a single entry. For example, <code class="docutils literal notranslate"><span class="pre">1m30s</span></code> is equivalent to 90 seconds. (Default value is <code class="docutils literal notranslate"><span class="pre">30m</span></code>)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.Java_Database_Connection.max_pool_size">
+<span class="sig-name descname"><span class="pre">max_pool_size</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.Java_Database_Connection.max_pool_size" title="Link to this definition"></a></dt>
+<dd><p>Maximum number of physical connections for a pool. A value of 0 means unlimited. (Default value is <code class="docutils literal notranslate"><span class="pre">50</span></code>)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.Java_Database_Connection.min_pool_size">
+<span class="sig-name descname"><span class="pre">min_pool_size</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.Java_Database_Connection.min_pool_size" title="Link to this definition"></a></dt>
+<dd><p>Minimum number of physical connections to maintain in the pool. The pool is not pre-populated. Aged timeout can override the minimum.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.Java_Database_Connection.password">
+<span class="sig-name descname"><span class="pre">password</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.Java_Database_Connection.password" title="Link to this definition"></a></dt>
+<dd><p>The password used to to authenticate with the database.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.Java_Database_Connection.port">
+<span class="sig-name descname"><span class="pre">port</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.Java_Database_Connection.port" title="Link to this definition"></a></dt>
+<dd><p>The port that the database is listening on.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.Java_Database_Connection.server_name">
+<span class="sig-name descname"><span class="pre">server_name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.Java_Database_Connection.server_name" title="Link to this definition"></a></dt>
+<dd><p>The IP address or hostname of the database.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.Java_Database_Connection.service_name">
+<span class="sig-name descname"><span class="pre">service_name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.Java_Database_Connection.service_name" title="Link to this definition"></a></dt>
+<dd><p>The name of the database service to connect to. Only applicable for Oracle connection, this parameter is required for all Oracle connections.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.Java_Database_Connection.ssl">
+<span class="sig-name descname"><span class="pre">ssl</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.Java_Database_Connection.ssl" title="Link to this definition"></a></dt>
+<dd><p>Controls whether SSL is used to establish the connection.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.Java_Database_Connection.type">
+<span class="sig-name descname"><span class="pre">type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.Java_Database_Connection.type" title="Link to this definition"></a></dt>
+<dd><p>The Oracle JDBC driver type. Valid types are <code class="docutils literal notranslate"><span class="pre">thin</span></code> and <code class="docutils literal notranslate"><span class="pre">oci</span></code>. Only applicable for Oracle connection, this parameter is required for all Oracle connections.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.Java_Database_Connection.user">
+<span class="sig-name descname"><span class="pre">user</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.Java_Database_Connection.user" title="Link to this definition"></a></dt>
+<dd><p>The user name used to to authenticate with the database.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.LDAPConnection">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">LDAPConnection</span></span><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.LDAPConnection" title="Link to this definition"></a></dt>
+<dd><p>ldap</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.LDAPConnection.Server">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Server</span></span><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.LDAPConnection.Server" title="Link to this definition"></a></dt>
+<dd><dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.LDAPConnection.Server.connection">
+<span class="sig-name descname"><span class="pre">connection</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.LDAPConnection.Server.connection" title="Link to this definition"></a></dt>
+<dd><p>The connection properties. This dictionary uses the properties from <code class="docutils literal notranslate"><span class="pre">LDAPConnection</span></code>.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.LDAPConnection.Server.order">
+<span class="sig-name descname"><span class="pre">order</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.LDAPConnection.Server.order" title="Link to this definition"></a></dt>
+<dd><p>The order of precedence for this server.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.LDAPConnection.bind_dn">
+<span class="sig-name descname"><span class="pre">bind_dn</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.LDAPConnection.bind_dn" title="Link to this definition"></a></dt>
+<dd><p>The distinguished name to use to bind to the LDAP server.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.LDAPConnection.bind_password">
+<span class="sig-name descname"><span class="pre">bind_password</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.LDAPConnection.bind_password" title="Link to this definition"></a></dt>
+<dd><p>The password for bindDN to use when binding to the LDAP server.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.LDAPConnection.hostname">
+<span class="sig-name descname"><span class="pre">hostname</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.LDAPConnection.hostname" title="Link to this definition"></a></dt>
+<dd><p>The IP address or hostname of the LDAP server.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.LDAPConnection.key_file">
+<span class="sig-name descname"><span class="pre">key_file</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.LDAPConnection.key_file" title="Link to this definition"></a></dt>
+<dd><p>The key database to be used as an SSL truststore.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.LDAPConnection.key_label">
+<span class="sig-name descname"><span class="pre">key_label</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.LDAPConnection.key_label" title="Link to this definition"></a></dt>
+<dd><p>The name of the key which should be used during mutual authentication with the LDAP server.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.LDAPConnection.port">
+<span class="sig-name descname"><span class="pre">port</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.LDAPConnection.port" title="Link to this definition"></a></dt>
+<dd><p>The port that the LDAP server is listening on.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.LDAPConnection.servers">
+<span class="sig-name descname"><span class="pre">servers</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.LDAPConnection.Server" title="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.LDAPConnection.Server"><span class="pre">Server</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.LDAPConnection.servers" title="Link to this definition"></a></dt>
+<dd><p>Additional LDAP servers for this connection.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.LDAPConnection.ssl">
+<span class="sig-name descname"><span class="pre">ssl</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.LDAPConnection.ssl" title="Link to this definition"></a></dt>
+<dd><p>Controls whether SSL is used to establish the connection.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.LDAPConnection.timeout">
+<span class="sig-name descname"><span class="pre">timeout</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.LDAPConnection.timeout" title="Link to this definition"></a></dt>
+<dd><p>Amount of time, in seconds, after which a connection to the LDAP server times out.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.RedisConnection">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">RedisConnection</span></span><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.RedisConnection" title="Link to this definition"></a></dt>
+<dd><p>redis</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.RedisConnection.Server">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Server</span></span><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.RedisConnection.Server" title="Link to this definition"></a></dt>
+<dd><dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.RedisConnection.Server.hostname">
+<span class="sig-name descname"><span class="pre">hostname</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.RedisConnection.Server.hostname" title="Link to this definition"></a></dt>
+<dd><p>The IP address or hostname of the Redis server.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.RedisConnection.Server.port">
+<span class="sig-name descname"><span class="pre">port</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.RedisConnection.Server.port" title="Link to this definition"></a></dt>
+<dd><p>The port that the Redis server is listening on.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.RedisConnection.connection_timeout">
+<span class="sig-name descname"><span class="pre">connection_timeout</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.RedisConnection.connection_timeout" title="Link to this definition"></a></dt>
+<dd><p>Amount of time, in seconds, after which a connection to the Redis server times out.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.RedisConnection.deployment_model">
+<span class="sig-name descname"><span class="pre">deployment_model</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.RedisConnection.deployment_model" title="Link to this definition"></a></dt>
+<dd><p>The Redis deployment model. Valid values are <code class="docutils literal notranslate"><span class="pre">standalone</span></code> and <code class="docutils literal notranslate"><span class="pre">sentinel</span></code>.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.RedisConnection.hostname">
+<span class="sig-name descname"><span class="pre">hostname</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.RedisConnection.hostname" title="Link to this definition"></a></dt>
+<dd><p>The IP address or hostname of the Redis server. This is only required if the <code class="docutils literal notranslate"><span class="pre">deployment_model</span></code> is set as <code class="docutils literal notranslate"><span class="pre">standalone</span></code>.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.RedisConnection.idle_timeout">
+<span class="sig-name descname"><span class="pre">idle_timeout</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.RedisConnection.idle_timeout" title="Link to this definition"></a></dt>
+<dd><p>Amount of time, in seconds, after which an established connection will be discarded as idle.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.RedisConnection.io_timeout">
+<span class="sig-name descname"><span class="pre">io_timeout</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.RedisConnection.io_timeout" title="Link to this definition"></a></dt>
+<dd><p>Amount of time, in seconds, after which the connection socket will timeout.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.RedisConnection.master_name">
+<span class="sig-name descname"><span class="pre">master_name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.RedisConnection.master_name" title="Link to this definition"></a></dt>
+<dd><p>The key used in the redis sentinel node to store the master/slave configuration.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.RedisConnection.max_idle_size">
+<span class="sig-name descname"><span class="pre">max_idle_size</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.RedisConnection.max_idle_size" title="Link to this definition"></a></dt>
+<dd><p>The maximum number of idle connections in the pool.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.RedisConnection.max_pool_size">
+<span class="sig-name descname"><span class="pre">max_pool_size</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.RedisConnection.max_pool_size" title="Link to this definition"></a></dt>
+<dd><p>Number of connections which will be pooled.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.RedisConnection.min_pool_size">
+<span class="sig-name descname"><span class="pre">min_pool_size</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.RedisConnection.min_pool_size" title="Link to this definition"></a></dt>
+<dd><p>The minimum number of idle connections in the pool.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.RedisConnection.password">
+<span class="sig-name descname"><span class="pre">password</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.RedisConnection.password" title="Link to this definition"></a></dt>
+<dd><p>The password used to to authenticate with the Redis server.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.RedisConnection.port">
+<span class="sig-name descname"><span class="pre">port</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.RedisConnection.port" title="Link to this definition"></a></dt>
+<dd><p>The port that the Redis server is listening on.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.RedisConnection.servers">
+<span class="sig-name descname"><span class="pre">servers</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.RedisConnection.Server" title="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.RedisConnection.Server"><span class="pre">Server</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.RedisConnection.servers" title="Link to this definition"></a></dt>
+<dd><p>Additional Redis servers for this connection.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.RedisConnection.ssl">
+<span class="sig-name descname"><span class="pre">ssl</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.RedisConnection.ssl" title="Link to this definition"></a></dt>
+<dd><p>Controls whether SSL is used to establish the connection.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.RedisConnection.ssl_key_label">
+<span class="sig-name descname"><span class="pre">ssl_key_label</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.RedisConnection.ssl_key_label" title="Link to this definition"></a></dt>
+<dd><p>The key database to be used as an SSL keystore. Only required if <code class="docutils literal notranslate"><span class="pre">ssl</span></code> is set to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.RedisConnection.ssl_truststore">
+<span class="sig-name descname"><span class="pre">ssl_truststore</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.RedisConnection.ssl_truststore" title="Link to this definition"></a></dt>
+<dd><p>The key database to be used as an SSL truststore. Only required if <code class="docutils literal notranslate"><span class="pre">ssl</span></code> is set to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.RedisConnection.user">
+<span class="sig-name descname"><span class="pre">user</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.RedisConnection.user" title="Link to this definition"></a></dt>
+<dd><p>The user name to authenticate to the Redis server.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.SMTPConnection">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">SMTPConnection</span></span><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.SMTPConnection" title="Link to this definition"></a></dt>
+<dd><p>smtp</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.SMTPConnection.hostname">
+<span class="sig-name descname"><span class="pre">hostname</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.SMTPConnection.hostname" title="Link to this definition"></a></dt>
+<dd><p>The IP address or hostname of the SMTP server.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.SMTPConnection.password">
+<span class="sig-name descname"><span class="pre">password</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.SMTPConnection.password" title="Link to this definition"></a></dt>
+<dd><p>The password used to to authenticate with the SMTP server.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.SMTPConnection.port">
+<span class="sig-name descname"><span class="pre">port</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.SMTPConnection.port" title="Link to this definition"></a></dt>
+<dd><p>The port that the SMTP server is listening on.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.SMTPConnection.ssl">
+<span class="sig-name descname"><span class="pre">ssl</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.SMTPConnection.ssl" title="Link to this definition"></a></dt>
+<dd><p>Controls whether SSL is used to establish the connection.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.SMTPConnection.timeout">
+<span class="sig-name descname"><span class="pre">timeout</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.SMTPConnection.timeout" title="Link to this definition"></a></dt>
+<dd><p>Amount of time, in seconds, after which a connection to the SMTP server times out.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.SMTPConnection.user">
+<span class="sig-name descname"><span class="pre">user</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.SMTPConnection.user" title="Link to this definition"></a></dt>
+<dd><p>The user name to authenticate to the SMTP server.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.VerifyAccessRuntimeConnection">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">VerifyAccessRuntimeConnection</span></span><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.VerifyAccessRuntimeConnection" title="Link to this definition"></a></dt>
+<dd><p>isamruntime</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.VerifyAccessRuntimeConnection.bind_dn">
+<span class="sig-name descname"><span class="pre">bind_dn</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.VerifyAccessRuntimeConnection.bind_dn" title="Link to this definition"></a></dt>
+<dd><p>The distinguished name to use to bind to the Verify Identity Access Runtime LDAP server.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.VerifyAccessRuntimeConnection.bind_pwd">
+<span class="sig-name descname"><span class="pre">bind_pwd</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.VerifyAccessRuntimeConnection.bind_pwd" title="Link to this definition"></a></dt>
+<dd><p>The password for bindDN to use when binding to the Verify Identity Access Runtime LDAP server.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.VerifyAccessRuntimeConnection.ssl">
+<span class="sig-name descname"><span class="pre">ssl</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.VerifyAccessRuntimeConnection.ssl" title="Link to this definition"></a></dt>
+<dd><p>Controls whether SSL is used to establish the connection.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.VerifyAccessRuntimeConnection.ssl_key_label">
+<span class="sig-name descname"><span class="pre">ssl_key_label</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.VerifyAccessRuntimeConnection.ssl_key_label" title="Link to this definition"></a></dt>
+<dd><p>The name of the key which should be used during mutual authentication with the Verify Identity Access runtime LDAP server.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.VerifyAccessRuntimeConnection.ssl_truststore">
+<span class="sig-name descname"><span class="pre">ssl_truststore</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.VerifyAccessRuntimeConnection.ssl_truststore" title="Link to this definition"></a></dt>
+<dd><p>The key database to be used as an SSL truststore. This field is required when <code class="docutils literal notranslate"><span class="pre">ssl</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.WebServiceConnection">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">WebServiceConnection</span></span><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.WebServiceConnection" title="Link to this definition"></a></dt>
+<dd><p>ws</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.WebServiceConnection.key_file">
+<span class="sig-name descname"><span class="pre">key_file</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.WebServiceConnection.key_file" title="Link to this definition"></a></dt>
+<dd><p>The key database to be used as an SSL truststore. This field is required when <code class="docutils literal notranslate"><span class="pre">ssl</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.WebServiceConnection.key_label">
+<span class="sig-name descname"><span class="pre">key_label</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.WebServiceConnection.key_label" title="Link to this definition"></a></dt>
+<dd><p>The name of the key which should be used during mutual authentication with the web server.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.WebServiceConnection.password">
+<span class="sig-name descname"><span class="pre">password</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.WebServiceConnection.password" title="Link to this definition"></a></dt>
+<dd><p>The password used to to authenticate with the web service.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.WebServiceConnection.ssl">
+<span class="sig-name descname"><span class="pre">ssl</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.WebServiceConnection.ssl" title="Link to this definition"></a></dt>
+<dd><p>Controls whether SSL is used to establish the connection.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.WebServiceConnection.url">
+<span class="sig-name descname"><span class="pre">url</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.WebServiceConnection.url" title="Link to this definition"></a></dt>
+<dd><p>The fully qualified URL of the web service endpoint, including the protocol, host/IP, port and path.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.WebServiceConnection.user">
+<span class="sig-name descname"><span class="pre">user</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.WebServiceConnection.user" title="Link to this definition"></a></dt>
+<dd><p>The user name to authenticate to the web service.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.description">
+<span class="sig-name descname"><span class="pre">description</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.description" title="Link to this definition"></a></dt>
+<dd><p>A description of the connection.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.locked">
+<span class="sig-name descname"><span class="pre">locked</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.locked" title="Link to this definition"></a></dt>
+<dd><p>Controls whether the connection is allowed to be deleted. If not present, a default of <code class="docutils literal notranslate"><span class="pre">false</span></code> will be assumed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.name" title="Link to this definition"></a></dt>
+<dd><p>The name of the connection.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.properties">
+<span class="sig-name descname"><span class="pre">properties</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.IbmsecVerifyConnection" title="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.IbmsecVerifyConnection"><span class="pre">IbmsecVerifyConnection</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.Java_Database_Connection" title="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.Java_Database_Connection"><span class="pre">Java_Database_Connection</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.RedisConnection" title="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.RedisConnection"><span class="pre">RedisConnection</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.LDAPConnection" title="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.LDAPConnection"><span class="pre">LDAPConnection</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.SMTPConnection" title="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.SMTPConnection"><span class="pre">SMTPConnection</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.VerifyAccessRuntimeConnection" title="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.VerifyAccessRuntimeConnection"><span class="pre">VerifyAccessRuntimeConnection</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.WebServiceConnection" title="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.WebServiceConnection"><span class="pre">WebServiceConnection</span></a></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.properties" title="Link to this definition"></a></dt>
+<dd><p>Connection specific properties.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.type">
+<span class="sig-name descname"><span class="pre">type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection.type" title="Link to this definition"></a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">ci</span></code>, <code class="docutils literal notranslate"><span class="pre">ldap</span></code>, <code class="docutils literal notranslate"><span class="pre">isamruntime</span></code>, <code class="docutils literal notranslate"><span class="pre">oracle</span></code>, <code class="docutils literal notranslate"><span class="pre">db2</span></code>, <code class="docutils literal notranslate"><span class="pre">soliddb</span></code>, <code class="docutils literal notranslate"><span class="pre">psotgresql</span></code>, <code class="docutils literal notranslate"><span class="pre">smtp</span></code> and <code class="docutils literal notranslate"><span class="pre">ws</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The type of server connection. Valid types are</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.connections">
+<span class="sig-name descname"><span class="pre">connections</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection" title="src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.Server_Connection"><span class="pre">Server_Connection</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Server_Connections.connections" title="Link to this definition"></a></dt>
+<dd><p>List of server connections to create or update. Properties of individual connections are described in the <code class="docutils literal notranslate"><span class="pre">_Connection</span></code> subclasses.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="runtime-server-configuration">
+<h1>Runtime Server Configuration<a class="headerlink" href="#runtime-server-configuration" title="Link to this heading"></a></h1>
+<p>This property can be used to configure the runtime liberty server. This includes: configuring trace; managing endpoints/interfaces that
+the runtime server can respond to requests; setting server configuration parameters (such as proxy settings, SSL configuration); and
+defining users in the runtime user registry.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Runtime_Configuration">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.ibmvia_autoconf.access_control.AAC_Configurator.</span></span><span class="sig-name descname"><span class="pre">Runtime_Configuration</span></span><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Runtime_Configuration" title="Link to this definition"></a></dt>
+<dd><p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>runtime_properties:
+  users:
+  - name: &quot;easuser&quot;
+    password: !secret default/isva-secrets:runtime_password
+    groups:
+    - &quot;scimAdmin&quot;
+    - &quot;fidoAdmin&quot;
+  tuning_parameters:
+  - name: &quot;https_proxy_host&quot;
+    value: &quot;http://my.proxy&quot;
+  - name: &quot;https_proxy_port&quot;
+    value: &quot;3128&quot;
+  endpoints:
+  - interface: &quot;1.1&quot;
+    address: &quot;192.168.42.102&quot;
+    port: 444
+    ssl: true
+  - interface: &quot;1.2&quot;
+    dhcp4: true
+    dhcp6: false
+    port: 443
+    ssl: true
+</pre></div>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Runtime_Configuration.Endpoint">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Endpoint</span></span><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Runtime_Configuration.Endpoint" title="Link to this definition"></a></dt>
+<dd><dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Runtime_Configuration.Endpoint.address">
+<span class="sig-name descname"><span class="pre">address</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Runtime_Configuration.Endpoint.address" title="Link to this definition"></a></dt>
+<dd><p>The static address that the runtime endpoint will listen on.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Runtime_Configuration.Endpoint.dhcp4">
+<span class="sig-name descname"><span class="pre">dhcp4</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Runtime_Configuration.Endpoint.dhcp4" title="Link to this definition"></a></dt>
+<dd><p>Endpoint should listen on the DHCP IPv4 address for the given interface.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Runtime_Configuration.Endpoint.dhcp6">
+<span class="sig-name descname"><span class="pre">dhcp6</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Runtime_Configuration.Endpoint.dhcp6" title="Link to this definition"></a></dt>
+<dd><p>Endpoint should listen on the DHCP IPv6 address for the given interface.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Runtime_Configuration.Endpoint.interface">
+<span class="sig-name descname"><span class="pre">interface</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Runtime_Configuration.Endpoint.interface" title="Link to this definition"></a></dt>
+<dd><p>The interface the runtime endpoint will listen on.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Runtime_Configuration.Endpoint.port">
+<span class="sig-name descname"><span class="pre">port</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Runtime_Configuration.Endpoint.port" title="Link to this definition"></a></dt>
+<dd><p>Port that endpoint will listen on.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Runtime_Configuration.Endpoint.ssl">
+<span class="sig-name descname"><span class="pre">ssl</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Runtime_Configuration.Endpoint.ssl" title="Link to this definition"></a></dt>
+<dd><p>Endpoint should use SSL encryption for connections.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Runtime_Configuration.Group">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Group</span></span><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Runtime_Configuration.Group" title="Link to this definition"></a></dt>
+<dd><dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Runtime_Configuration.Group.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Runtime_Configuration.Group.name" title="Link to this definition"></a></dt>
+<dd><p>Name of the group to create or update.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Runtime_Configuration.Group.users">
+<span class="sig-name descname"><span class="pre">users</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Runtime_Configuration.Group.users" title="Link to this definition"></a></dt>
+<dd><p>List of users to add to the group.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Runtime_Configuration.Runtime_Tuning_Parameter">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Runtime_Tuning_Parameter</span></span><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Runtime_Configuration.Runtime_Tuning_Parameter" title="Link to this definition"></a></dt>
+<dd><dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Runtime_Configuration.Runtime_Tuning_Parameter.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Runtime_Configuration.Runtime_Tuning_Parameter.name" title="Link to this definition"></a></dt>
+<dd><p>The tuning parameter to set.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Runtime_Configuration.Runtime_Tuning_Parameter.value">
+<span class="sig-name descname"><span class="pre">value</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Runtime_Configuration.Runtime_Tuning_Parameter.value" title="Link to this definition"></a></dt>
+<dd><p>The new value for the specified parameter.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Runtime_Configuration.User">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">User</span></span><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Runtime_Configuration.User" title="Link to this definition"></a></dt>
+<dd><dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Runtime_Configuration.User.groups">
+<span class="sig-name descname"><span class="pre">groups</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Runtime_Configuration.User.groups" title="Link to this definition"></a></dt>
+<dd><p>A list of groups the new user will belong to.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Runtime_Configuration.User.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Runtime_Configuration.User.name" title="Link to this definition"></a></dt>
+<dd><p>Name of the user to create or update.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Runtime_Configuration.User.password">
+<span class="sig-name descname"><span class="pre">password</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Runtime_Configuration.User.password" title="Link to this definition"></a></dt>
+<dd><p>The password for the new user. This can contain any ASCII characters.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Runtime_Configuration.endpoints">
+<span class="sig-name descname"><span class="pre">endpoints</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Runtime_Configuration.Endpoint" title="src.ibmvia_autoconf.access_control.AAC_Configurator.Runtime_Configuration.Endpoint"><span class="pre">Endpoint</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Runtime_Configuration.endpoints" title="Link to this definition"></a></dt>
+<dd><p>List of http(s) endpoints that the AAC/Federation runtime is listenting on.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Runtime_Configuration.groups">
+<span class="sig-name descname"><span class="pre">groups</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Runtime_Configuration.Group" title="src.ibmvia_autoconf.access_control.AAC_Configurator.Runtime_Configuration.Group"><span class="pre">Group</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Runtime_Configuration.groups" title="Link to this definition"></a></dt>
+<dd><p>List of groups to add/update in the AAC/Federation runtime user registry</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Runtime_Configuration.trace">
+<span class="sig-name descname"><span class="pre">trace</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Runtime_Configuration.trace" title="Link to this definition"></a></dt>
+<dd><p>Set the runtime trace specification in Liberty.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Runtime_Configuration.tuning_parameters">
+<span class="sig-name descname"><span class="pre">tuning_parameters</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Runtime_Configuration.Runtime_Tuning_Parameter" title="src.ibmvia_autoconf.access_control.AAC_Configurator.Runtime_Configuration.Runtime_Tuning_Parameter"><span class="pre">Runtime_Tuning_Parameter</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Runtime_Configuration.tuning_parameters" title="Link to this definition"></a></dt>
+<dd><p>List of AAC/Federation runtime JVM tuning parameters.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.ibmvia_autoconf.access_control.AAC_Configurator.Runtime_Configuration.users">
+<span class="sig-name descname"><span class="pre">users</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Runtime_Configuration.User" title="src.ibmvia_autoconf.access_control.AAC_Configurator.Runtime_Configuration.User"><span class="pre">User</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#src.ibmvia_autoconf.access_control.AAC_Configurator.Runtime_Configuration.users" title="Link to this definition"></a></dt>
+<dd><p>List of users to add/update in the AAC/Federation runtime user registry. Users are created before groups, so if you are creating a user and a group in the same autoconf; then only add you user to the list of users when creating the group.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Lachlan Gleeson, IBM.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

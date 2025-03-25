@@ -1,0 +1,2618 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Example Verify Identity Access Configurations (Getting Started) &mdash; ibmvia-autoconf  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Appliance Configuration" href="appliance.html" />
+    <link rel="prev" title="Welcome to ibmvia-autoconf documentation!" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            ibmvia-autoconf
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Example Verify Identity Access Configurations (Getting Started)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#first-steps-container-deployment">First Steps (container deployment)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#first-steps-appliance-deployment">First Steps (appliance deployment)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#container-golden-image-pipeline">Container golden image pipeline</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#base-snapshot">Base Snapshot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#development-environment">Development Environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#production-environment">Production Environment</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#webseal-reverse-proxy-using-advanced-access-control-authentication">WebSEAL Reverse Proxy using Advanced Access Control authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installation-of-the-instana-monitoring-agent">Installation of the Instana monitoring agent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mobile-multi-factor-authentication-cookbook">Mobile Multi-Factor Authentication Cookbook</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#before-you-start">Before you start</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mobile-multi-factor-authentication-configuration">Mobile Multi-Factor Authentication Configuration:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#testing-it-out">Testing it out</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#federation-cookbook">Federation Cookbook</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Before you start</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-idp-yaml">IdP Configuration:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sp-configuration">SP Configuration:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-idp-partner-yaml">IdP Partner Configuration:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#trying-it-out">Trying it out</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="appliance.html">Appliance Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="container.html">Container Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="webseal.html">WebSEAL Reverse Proxy Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="access_control.html">Advanced Access Control Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="federations.html">Federations Configuration</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ibmvia-autoconf</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Example Verify Identity Access Configurations (Getting Started)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/examples.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="example-verify-identity-access-configurations-getting-started">
+<h1>Example Verify Identity Access Configurations (Getting Started)<a class="headerlink" href="#example-verify-identity-access-configurations-getting-started" title="Link to this heading"></a></h1>
+<section id="first-steps-container-deployment">
+<h2>First Steps (container deployment)<a class="headerlink" href="#first-steps-container-deployment" title="Link to this heading"></a></h2>
+<p>The first steps configuration file defines some initial configuration that is required for all Verify Identity Access deployments.
+These steps include:</p>
+<ul class="simple">
+<li><p>Accepting the software license agreement and initial management configuration.</p></li>
+<li><p>Configuring service accounts for publishing snapshots to Runtime Containers.</p></li>
+<li><p>Importing PKI for the LDAP Runtime Server and High-Volume Runtime Database.</p></li>
+<li><p>Applying module licenses for the WebSEAL, Advanced Access Control and Federation modules.</p></li>
+<li><p>Configuring the WebSEAL Runtime Policy Server / User Registry.</p></li>
+</ul>
+<p>To run this configuration you should define the following properties, where the “current directory” contains the PKI for the LDAP and HVDB services:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">IVIA_CONFIG_BASE</span><span class="o">=</span><span class="s2">&quot;current directory&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">IVIA_CONFIG_YAML</span><span class="o">=</span>first_steps.yaml
+<span class="nb">export</span><span class="w"> </span><span class="nv">IVIA_MGMT_BASE_URL</span><span class="o">=</span><span class="s2">&quot;https://192.168.42.101&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">IVIA_MGMT_USER</span><span class="o">=</span>admin
+<span class="nb">export</span><span class="w"> </span><span class="nv">IVIA_MGMT_PWD</span><span class="o">=</span>betterThanPassw0rd
+<span class="nb">export</span><span class="w"> </span><span class="nv">IVIA_MGMT_OLD_PWD</span><span class="o">=</span>admin
+<span class="nb">export</span><span class="w"> </span><span class="nv">IVIA_BASE_CODE</span><span class="o">=</span><span class="s2">&quot;webseal activation code&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">IVIA_AAC_CODE</span><span class="o">=</span><span class="s2">&quot;access control activation code&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">IVIA_FED_CODE</span><span class="o">=</span><span class="s2">&quot;federations activation code&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">LDAP_BIND_PASSWORD</span><span class="o">=</span>betterThanPassw0rd
+<span class="nb">export</span><span class="w"> </span><span class="nv">LDAP_SEC_PASSWORD</span><span class="o">=</span>betterThanPassw0rd
+</pre></div>
+</div>
+<p>The container deployment used for this demo can be found in the <a class="reference external" href="https://github.com/IBM-Security/verify-access-container-deployment">Verify Identity Access</a>
+sample code.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>container:
+  compose_services:
+    - &quot;isvawrprp1&quot;
+    - &quot;isvaruntime&quot;
+  docker_compose_yaml: &quot;iamlab/docker-compose.yaml&quot;
+  admin_cfg:
+    session_timeout: 720
+  account_management:
+    users:
+    - name: &quot;cfgsvc&quot;
+      operation: &quot;update&quot;
+      password: &quot;Passw0rd&quot;
+  management_authorization:
+    authorization_enforcement: True
+    roles:
+    - operation: &quot;update&quot;
+      name: &quot;Configuration Service&quot;
+      users:
+      - name: &quot;cfgsvc&quot;
+        type: &quot;local&quot;
+      features:
+      - name: &quot;shared_volume&quot;
+        access: &quot;w&quot;
+  ssl_certificates:
+  - name: &quot;lmi_trust_store&quot;
+    signer_certificates:
+    - &quot;pki/postgresql/postgres.crt&quot;
+    - &quot;pki/openldap/ca.crt&quot;
+  - name: &quot;rt_profile_keys&quot;
+    signer_certificates:
+    - &quot;pki/postgresql/postgres.crt&quot;
+  cluster:
+    runtime_database:
+      host: &quot;postgresql&quot;
+      port: 5432
+      type: &quot;postgresql&quot;
+      user: &quot;postgres&quot;
+      password: &quot;Passw0rd&quot;
+      ssl: True
+      db_name: &quot;isva&quot;
+  activation: #Activation codes
+    webseal: !environment IVIA_BASE_CODE
+    access_control: !environment IVIA_AAC_CODE
+    federation: !environment IVIA_FED_CODE
+webseal:
+  runtime:
+    policy_server: &quot;ldap&quot;
+    user_registry: &quot;ldap&quot;
+    ldap:
+      host: &quot;openldap&quot;
+      port: 636
+      dn: &quot;cn=root,secAuthority=Default&quot;
+      dn_password: &quot;Passw0rd&quot;
+      key_file: &quot;lmi_trust_store&quot;
+    clean_ldap: True
+    domain: &quot;Default&quot;
+    admin_user: &quot;sec_master&quot;
+    admin_password: &quot;Passw0rd&quot;
+    admin_cert_lifetime: 1460
+    ssl_compliance: &quot;fips&quot;
+</pre></div>
+</div>
+</section>
+<section id="first-steps-appliance-deployment">
+<h2>First Steps (appliance deployment)<a class="headerlink" href="#first-steps-appliance-deployment" title="Link to this heading"></a></h2>
+<p>The first steps configuration file defines some initial configuration that is required for all Verify Identity Access deployments.
+These steps include:</p>
+<ul class="simple">
+<li><p>Accepting the software license agreement and initial management configuration.</p></li>
+<li><p>Setting network configuration (routes, ip addresses, dns).</p></li>
+<li><p>Applying module licenses for the WebSEAL, Advanced Access Control and Federation modules.</p></li>
+<li><p>Configuring the WebSEAL Runtime Policy Server / User Registry.</p></li>
+</ul>
+<p>To run this configuration you should define the following properties:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">IVIA_CONFIG_YAML</span><span class="o">=</span>appliance_first_steps.yaml
+<span class="nb">export</span><span class="w"> </span><span class="nv">IVIA_MGMT_BASE_URL</span><span class="o">=</span><span class="s2">&quot;https://192.168.42.101&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">IVIA_MGMT_USER</span><span class="o">=</span>admin
+<span class="nb">export</span><span class="w"> </span><span class="nv">IVIA_MGMT_PWD</span><span class="o">=</span>betterThanPassw0rd
+<span class="nb">export</span><span class="w"> </span><span class="nv">IVIA_MGMT_OLD_PWD</span><span class="o">=</span>admin
+<span class="nb">export</span><span class="w"> </span><span class="nv">IVIA_BASE_CODE</span><span class="o">=</span><span class="s2">&quot;webseal activation code&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">IVIA_AAC_CODE</span><span class="o">=</span><span class="s2">&quot;access control activation code&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">IVIA_FED_CODE</span><span class="o">=</span><span class="s2">&quot;federations activation code&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">LDAP_BIND_PASSWORD</span><span class="o">=</span>betterThanPassw0rd
+<span class="nb">export</span><span class="w"> </span><span class="nv">LDAP_SEC_PASSWORD</span><span class="o">=</span>betterThanPassw0rd
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>appliance:
+  admin_cfg:
+    session_timeout: 720
+  activation: #Activation codes
+    webseal: !environment IVIA_BASE_CODE
+    access_control: !environment IVIA_AAC_CODE
+    federation: !environment IVIA_FED_CODE
+  network:
+    routes:
+    - enabled: True
+      comment: &quot;Default route&quot;
+      address: &quot;default&quot;
+      gateway: &quot;192.168.42.1&quot;
+      interface: &quot;1.1&quot;
+    interfaces:
+    - label: &quot;1.1&quot;
+      comment: &quot;Default Interface&quot;
+      enabled: True
+      ipv4:
+        dhcp:
+          enabled: False
+          allow_management: False
+          provides_default_route: False
+        addresses:
+        - address: &quot;192.168.42.101&quot;
+          mask_or_prefix: &quot;24&quot;
+          broadcast_address: &quot;192.168.42.255&quot;
+          allow_management: True
+          enabled: True
+        - address: &quot;192.168.42.102&quot;
+          mask_or_prefix: &quot;24&quot;
+          broadcast_address: &quot;192.168.42.255&quot;
+          allow_management: False
+          enabled: True
+      ipv6:
+        dhcp:
+          enabled: False
+          allowManagement: False
+    dns:
+      auto: False
+      primary_server: &quot;9.9.9.9&quot;
+webseal:
+  runtime:
+    policy_server: &quot;local&quot;
+    user_registry: &quot;local&quot;
+    ldap:
+      host: &quot;localhost&quot;
+      port: 389
+      dn: &quot;cn=root,secAuthority=Default&quot;
+      dn_password: !environment LDAP_BIND_PASSWORD
+    clean_ldap: True
+    domain: &quot;Default&quot;
+    admin_user: &quot;sec_master&quot;
+    admin_password: !environment LDAP_SEC_PASSWORD
+    admin_cert_lifetime: 1460
+    ssl_compliance: &quot;none&quot;
+</pre></div>
+</div>
+</section>
+<section id="container-golden-image-pipeline">
+<h2>Container golden image pipeline<a class="headerlink" href="#container-golden-image-pipeline" title="Link to this heading"></a></h2>
+<p>This configuration example will demonstrate how administrators can set up a “pipeline” of configuration
+steps to build out a deployment. This is especially useful in staged (development/production) environments
+where a Verify Identity Access deployment might be tested in several different sandboxed environments before it is
+pushed to a production environment.</p>
+<p>This workflow builds on a configuration snapshot (golden image), which can be used to scale out a Verify Identity
+Access deployment. The first steps involve completing steps which are required for all environments, such
+as accepting EULA, activating Verify Identity Access modules, or importing static resources such as JavaScript
+mapping rules/HTML template files. Once this configuration has been completed, the generated snapshot
+file can be reused to bootstrap Verify Identity Access deployments in downstream environments.</p>
+<section id="base-snapshot">
+<h3>Base Snapshot<a class="headerlink" href="#base-snapshot" title="Link to this heading"></a></h3>
+<p>This configuration will accept the EULA, activate the modules of Verify Identity Access and enable OIDC authentication
+to the management interface.</p>
+<p>To run this configuration you should define the following properties:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">IVIA_CONFIG_YAML</span><span class="o">=</span>golden_base_image.yaml
+<span class="nb">export</span><span class="w"> </span><span class="nv">IVIA_MGMT_BASE_URL</span><span class="o">=</span><span class="s2">&quot;https://192.168.42.101&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">IVIA_MGMT_USER</span><span class="o">=</span>admin
+<span class="nb">export</span><span class="w"> </span><span class="nv">IVIA_MGMT_PWD</span><span class="o">=</span>betterThanPassw0rd
+<span class="nb">export</span><span class="w"> </span><span class="nv">IVIA_MGMT_OLD_PWD</span><span class="o">=</span>admin
+<span class="nb">export</span><span class="w"> </span><span class="nv">IVIA_BASE_CODE</span><span class="o">=</span><span class="s2">&quot;webseal activation code&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">IVIA_AAC_CODE</span><span class="o">=</span><span class="s2">&quot;access control activation code&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">IVIA_FED_CODE</span><span class="o">=</span><span class="s2">&quot;federations activation code&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>container:
+  deployments:
+    - &quot;isvawrp&quot;
+    - &quot;isvaruntime&quot;
+  account_management:
+    users:
+    - name: &quot;cfgsvc&quot;
+      operation: &quot;update&quot;
+      password: &quot;Passw0rd&quot;
+  management_authorization:
+    authorization_enforcement: True
+    roles:
+    - operation: &quot;update&quot;
+      name: &quot;Configuration Service&quot;
+      users:
+      - name: &quot;cfgsvc&quot;
+        type: &quot;local&quot;
+      features:
+      - name: &quot;shared_volume&quot;
+        access: &quot;w&quot;
+  management_authentication:
+    auth_type: &quot;federation&quot;
+    oidc:
+      client_id: !environment OIDC_CLIENT_ID
+      client_secret: !environment OIDC_CLIENT_SECRET
+      discovery_endpoint: !environment OIDC_WELL_KNOWN
+      enable_pkce: true
+  ssl_certificates:
+  - name: &quot;lmi_trust_store&quot;
+    signer_certificates:
+    - &quot;pki/base/postgresql/postgres.crt&quot;
+    - &quot;pki/base/openldap/ca.crt&quot;
+    - &quot;pki/base/verify.crt&quot;
+  - name: &quot;rt_profile_keys&quot;
+    signer_certificates:
+    - &quot;pki/base/postgresql/postgres.crt&quot;
+  cluster:
+    runtime_database:
+      host: &quot;postgresql&quot;
+      port: 5432
+      type: &quot;postgresql&quot;
+      user: &quot;postgres&quot;
+      password: &quot;Passw0rd&quot;
+      ssl: True
+      db_name: &quot;isva&quot;
+  activation: #Activation codes
+    webseal: !environment IVIA_BASE_CODE
+    access_control: !environment IVIA_AAC_CODE
+    federation: !environment IVIA_FED_CODE
+</pre></div>
+</div>
+</section>
+<section id="development-environment">
+<h3>Development Environment<a class="headerlink" href="#development-environment" title="Link to this heading"></a></h3>
+<p>This configuration step will set up the WebSEAL Reverse Proxy runtime environment and create a
+reverse proxy instance to test with. This configuration will also re-import the required PKI for
+the dev environment’s LDAP and HVDB connections.</p>
+<p>To run this configuration you should define the following properties:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">IVIA_CONFIG_YAML</span><span class="o">=</span>dev_env_image.yaml
+<span class="nb">export</span><span class="w"> </span><span class="nv">IVIA_MGMT_BASE_URL</span><span class="o">=</span><span class="s2">&quot;https://192.168.42.101&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">IVIA_MGMT_PWD</span><span class="o">=</span><span class="s2">&quot;apiKeyGoesHere&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">LDAP_PWD</span><span class="o">=</span><span class="s2">&quot;Passw0rd&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">RUNTIME_USER</span><span class="o">=</span><span class="s2">&quot;easuser&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">RUNTIME_PWD</span><span class="o">=</span><span class="s2">&quot;passw0rd&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>container:
+  deployments:
+    - &quot;isvawrp&quot;
+    - &quot;isvaruntime&quot;
+  snapshot: &quot;snapshots/isva_10.0.8.0.base.snapshot&quot;
+  ssl_certificates:
+  - name: &quot;lmi_trust_store&quot;
+    signer_certificates:
+    - &quot;pki/dev/postgresql/postgres.crt&quot;
+    - &quot;pki/dev/openldap/ca.crt&quot;
+  - name: &quot;rt_profile_keys&quot;
+    signer_certificates:
+    - &quot;pki/dev/postgresql/postgres.crt&quot;
+  template_pages:
+  - &quot;template_pages.zip&quot;
+  mapping_rules:
+  - &quot;mapping_rules.zip&quot;
+webseal:
+  runtime:
+    policy_server: &quot;ldap&quot;
+    user_registry: &quot;ldap&quot;
+    ldap:
+      host: &quot;openldap&quot;
+      port: 636
+      dn: &quot;cn=root,secAuthority=Default&quot;
+      dn_password: !environment LDAP_PWD
+      key_file: &quot;lmi_trust_store&quot;
+    clean_ldap: True
+    domain: &quot;Default&quot;
+    admin_user: &quot;sec_master&quot;
+    admin_password: !environment LDAP_PWD
+    admin_cert_lifetime: 1460
+    ssl_compliance: &quot;fips&quot;
+  reverse_proxy:
+  - name: &quot;wrp_instance&quot;
+    host: &quot;isvawrp&quot;
+    junction_point: &quot;/app&quot;
+    junction_type: &quot;tpc&quot;
+    server_hostname: &quot;my.backend.app&quot;
+    server_port: &quot;9080&quot;
+  aac_configuration:
+    hostname: &quot;isvaruntime&quot;
+    port: 9443
+    runtime:
+      user: !environment RUNTIME_USER
+      password: !environment RUNTIME_PWD
+    junction: &quot;/mga&quot;
+    reuse_acls: True
+    reuse_certs: True
+</pre></div>
+</div>
+</section>
+<section id="production-environment">
+<h3>Production Environment<a class="headerlink" href="#production-environment" title="Link to this heading"></a></h3>
+<p>This configuration step will deploy the development snapshot image to a production environment, updating
+the required PKI for connections to the HVDB and LDAP services.</p>
+<p>To run this configuration you should define the following properties:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">IVIA_CONFIG_YAML</span><span class="o">=</span>prod_env_image.yaml
+<span class="nb">export</span><span class="w"> </span><span class="nv">IVIA_MGMT_BASE_URL</span><span class="o">=</span><span class="s2">&quot;https://192.168.42.101&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">IVIA_MGMT_PWD</span><span class="o">=</span><span class="s2">&quot;apiKeyGoesHere&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">container</span><span class="p">:</span>
+  <span class="n">deployments</span><span class="p">:</span>
+    <span class="o">-</span> <span class="s2">&quot;isvawrp&quot;</span>
+    <span class="o">-</span> <span class="s2">&quot;isvaruntime&quot;</span>
+  <span class="n">snapshot</span><span class="p">:</span> <span class="s2">&quot;snapshots/isva_10.0.8.0.dev.snapshot&quot;</span>
+  <span class="n">ssl_certificates</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;lmi_trust_store&quot;</span>
+    <span class="n">signer_certificates</span><span class="p">:</span>
+    <span class="o">-</span> <span class="s2">&quot;pki/prod/postgresql/postgres.crt&quot;</span>
+    <span class="o">-</span> <span class="s2">&quot;pki/prod/openldap/ca.crt&quot;</span>
+  <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;rt_profile_keys&quot;</span>
+    <span class="n">signer_certificates</span><span class="p">:</span>
+    <span class="o">-</span> <span class="s2">&quot;pki/prod/postgresql/postgres.crt&quot;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="webseal-reverse-proxy-using-advanced-access-control-authentication">
+<h2>WebSEAL Reverse Proxy using Advanced Access Control authentication<a class="headerlink" href="#webseal-reverse-proxy-using-advanced-access-control-authentication" title="Link to this heading"></a></h2>
+<p>The WebSEAL / AAC deployment defines a Verify Identity Access deployment with a single WebSEAL reverse proxy. This proxy is
+configured to perform authentication using the AAC authentication capabilities. The configuration steps performed
+include:</p>
+<ul class="simple">
+<li><p>Creating a WebSEAL Reverse Proxy instance</p></li>
+<li><p>Integrating the AAC/Federation runtime to provide authentication to WebSEAL</p></li>
+<li><p>Enable the Username/Password authentication mechanism</p></li>
+<li><p>Create a demo user in the WebSEAL User Registry</p></li>
+<li><p>Update the default WebSEAL login page to use AAC</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>container:
+  docker_compose_yaml: &quot;iamlab/docker-compose.yaml&quot;
+  compose_services:
+  - &quot;isvaruntime&quot;
+  - &quot;isvawrp-rp1&quot;
+webseal:
+  runtime:
+    policy_server: &quot;ldap&quot;
+    user_registry: &quot;ldap&quot;
+    ldap:
+      host: &quot;openldap&quot;
+      port: 636
+      dn: !environment LDAP_BIND_DN
+      dn_password: !environment LDAP_BIND_PW
+      key_file: &quot;lmi_trust_store&quot;
+    clean_ldap: True
+    domain: &quot;Default&quot;
+    admin_user: !environment LDAP_SEC_USER
+    admin_password: !environment LDAP_SEC_PW
+    admin_cert_lifetime: 1460
+    ssl_compliance: &quot;fips&quot;
+  reverse_proxy:
+  - name: &quot;default&quot;
+    host: &quot;isvawebseal&quot;
+    http:
+      enabled: &quot;no&quot;
+    https:
+      enabled: &quot;yes&quot;
+    domain: &quot;Default&quot;
+    ldap:
+      ssl: &quot;yes&quot;
+      port: 636
+      key_file: &quot;lmi_trust_store&quot;
+    aac_configuration:
+      junction: &quot;/mga&quot;
+      runtime:
+        hostname: &quot;isvaruntime&quot;
+        port: 9443
+        user: !environment AAC_RUNTIME_USER
+        password: !environment AAC_RUNTIME_PW
+      reuse_certs: True
+      reuse_acls: True
+    stanza_configuration:
+    - stanza: &quot;acnt-mgt&quot;
+      entry_id: &quot;enable-local-response-redirect&quot;
+      value: &quot;yes&quot;
+      operation: &quot;update&quot;
+    - stanza: &quot;local-response-redirect&quot;
+      entry_id: &quot;local-response-redirect-uri&quot;
+      value: &quot;/mga/sps/authsvc?PolicyId=urn:ibm:security:authentication:asf:password&quot;
+      operation: &quot;update&quot;
+  pdadmin:
+    users:
+    - name: &quot;testuser&quot;
+      dn: !environment TEST_BIND_DN
+      password: !environment TEST_PW
+access_control:
+  authentication:
+    policies:
+    - name: &quot;Username Password&quot;
+      description: &quot;Username and password authentication policy.&quot;
+      enabled: true
+      uri: &quot;urn:ibm:security:authentication:asf:password&quot;
+      policy: &quot;&lt;Policy xmlns=\&quot;urn:ibm:security:authentication:policy:1.0:schema\&quot; PolicyId=\&quot;urn:ibm:security:authentication:asf:password\&quot;&gt;&lt;Description&gt;Username and password authentication policy.&lt;/Description&gt;&lt;Step type=\&quot;Authenticator\&quot;&gt;&lt;Authenticator AuthenticatorId=\&quot;urn:ibm:security:authentication:asf:mechanism:password\&quot;/&gt;&lt;/Step&gt;&lt;Actions&gt;&lt;Action On=\&quot;null\&quot; type=\&quot;null\&quot;&gt;&lt;AttributeAssignments/&gt;&lt;/Action&gt;&lt;/Actions&gt;&lt;/Policy&gt;&quot;
+    mechanisms:
+    - id: &quot;7&quot;
+      name: &quot;Username Password&quot;
+      type: &quot;Username Password&quot;
+      description: &quot;Username password authentication&quot;
+      uri: &quot;urn:ibm:security:authentication:asf:mechanism:password&quot;
+      properties:
+        usernamePasswordAuthentication.enableLastLogin: &quot;false&quot;
+        usernamePasswordAuthentication.loginFailuresPersistent: &quot;false&quot;
+        usernamePasswordAuthentication.maxServerConnections: &quot;16&quot;
+        usernamePasswordAuthentication.mgmtDomain: &quot;Default&quot;
+        usernamePasswordAuthentication.sslServerStartTLS: &quot;false&quot;
+        usernamePasswordAuthentication.useFederatedDirectoriesConfig: &quot;false&quot;
+        usernamePasswordAuthentication.userSearchFilter: &quot;(|(objectclass=ePerson)(objectclass=Person))&quot;
+        usernamePasswordAuthentication.ldapBindDN: !environment LDAP_BIND_DN
+        usernamePasswordAuthentication.ldapHostName: &quot;openldap&quot;
+        usernamePasswordAuthentication.ldapBindPwd: !environment LDAP_BIND_PW
+        usernamePasswordAuthentication.ldapPort: &quot;636&quot;
+        usernamePasswordAuthentication.sslEnabled: &quot;true&quot;
+        usernamePasswordAuthentication.sslTrustStore: &quot;lmi_trust_store&quot;
+      attributes:
+      - selector: &quot;mobile&quot;
+        name: &quot;mobileNumber&quot;
+        namespace: &quot;urn:ibm:security:authentication:asf:mechanism:password&quot;
+      - selector: &quot;mail&quot;
+        name: &quot;emailAddress&quot;
+        namespace: &quot;urn:ibm:security:authentication:asf:mechanism:password&quot;
+</pre></div>
+</div>
+</section>
+<section id="installation-of-the-instana-monitoring-agent">
+<h2>Installation of the Instana monitoring agent<a class="headerlink" href="#installation-of-the-instana-monitoring-agent" title="Link to this heading"></a></h2>
+<p>The Instana monitoring example defines a Verify Identity Access deployment where a third party infrastructure monitoring tool (Instana)
+is installed onto a Verify Identity Access appliance using a <a class="reference external" href="https://exchange.xforce.ibmcloud.com/hub">Verify Identity Access Extension</a>. This
+extension allows administrators to collect detailed system information (CPU, RAM, Disk, Networking) during runtime. This example
+assumes that you have a valid Instana tenant and have downloaded the latest <a class="reference external" href="https://packages.instana.io/agent/download">Agent RPM</a>
+for JDK 11. The configuration steps performed include:</p>
+<ul class="simple">
+<li><p>Applying the module licenses</p></li>
+<li><p>Set static networking properties
+- Static IPv4 addresses
+- Gateway (default route) settings
+- Set DNS properties</p></li>
+<li><p>Install the Instana extension</p></li>
+<li><p>Configure the WebSEAL RTE (Policy Server/User Registry)</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>appliance:
+  admin_cfg:
+    session_timeout: 720
+  activation: #Activation codes
+    webseal: !environment IVIA_BASE_CODE
+    access_control: !environment IVIA_AAC_CODE
+    federation: !environment IVIA_FED_CODE
+  network:
+    routes:
+    - enabled: True
+      comment: &quot;Default route&quot;
+      address: &quot;default&quot;
+      gateway: &quot;192.168.42.1&quot;
+      interface: &quot;1.1&quot;
+    interfaces:
+    - label: &quot;1.1&quot;
+      comment: &quot;Default Interface&quot;
+      enabled: True
+      ipv4:
+        dhcp:
+          enabled: False
+          allow_management: False
+          provides_default_route: False
+        addresses:
+        - address: &quot;192.168.42.101&quot;
+          mask_or_prefix: &quot;24&quot;
+          broadcast_address: &quot;192.168.42.255&quot;
+          allow_management: True
+          enabled: True
+        - address: &quot;192.168.42.102&quot;
+          mask_or_prefix: &quot;24&quot;
+          broadcast_address: &quot;192.168.42.255&quot;
+          allow_management: False
+          enabled: True
+      ipv6:
+        dhcp:
+          enabled: False
+          allowManagement: False
+    dns:
+      auto: False
+      primary_server: &quot;9.9.9.9&quot;
+  extensions:
+  - extension: &quot;Instana/instana.ext&quot;
+    third_party_packages:
+    - &quot;Instana/agent.rpm&quot;
+    properties:
+      extId: &quot;instanaAgent&quot;
+      instanaAgentKey: !environment INSTANA_AGENT_KEY 
+      instanaHost: !environment INSTANA_HOST
+      instanaPort: &quot;443&quot;
+      mvnRepositoryUrl: &quot;https://artifact-public.instana.io&quot;
+      mvnRepositoryFeaturesPath: &quot;artifactory/features-public@id=features@snapshots@snapshotsUpdate=never&quot;
+      mvnRepositorySharedPath: &quot;artifactory/shared@id=shared@snapshots@snapshotsUpdate=never&quot;
+webseal:
+  runtime:
+    policy_server: &quot;local&quot;
+    user_registry: &quot;local&quot;
+    ldap:
+      host: &quot;localhost&quot;
+      port: 389
+      dn: &quot;cn=root,secAuthority=Default&quot;
+      dn_password: !environment LDAP_BIND_PASSWORD
+    clean_ldap: True
+    domain: &quot;Default&quot;
+    admin_user: &quot;sec_master&quot;
+    admin_password: !environment LDAP_SEC_PASSWORD
+    admin_cert_lifetime: 1460
+    ssl_compliance: &quot;none&quot;
+</pre></div>
+</div>
+</section>
+<section id="mobile-multi-factor-authentication-cookbook">
+<h2>Mobile Multi-Factor Authentication Cookbook<a class="headerlink" href="#mobile-multi-factor-authentication-cookbook" title="Link to this heading"></a></h2>
+<p>The MMFA example follows the legacy cookbook deployment guide. This guide will configure Verify Identity Access to
+demonstrate the transaction signing, context-base access and risk-based access capabilities of the product.</p>
+<p>To successfully run this demo there are some pre-requisites which your environment must meet.</p>
+<section id="before-you-start">
+<h3>Before you start<a class="headerlink" href="#before-you-start" title="Link to this heading"></a></h3>
+<ul>
+<li><dl class="simple">
+<dt>Deploy the user registry (ISDS/LDAP) and runtime database (HVDB).</dt><dd><ul class="simple">
+<li><p>Temporary services can be deployed using the verify access demo containers, an exampele deployment is
+available <a class="reference external" href="https://gist.github.com/lachlan-ibm">here</a>.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>[Optional] Deploy the Verify Identity Access Operator to manage runtime containers and configuration snapshots.</p></li>
+<li><dl class="simple">
+<dt>Deploy the configuration, web reverse proxy, and runtime Verify Identity Access containers.</dt><dd><ul class="simple">
+<li><p>An example deployment of configuration, reverse proxy and runtime containers can be
+found <a class="reference external" href="https://gist.github.com/lachlan-ibm">here</a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Generate any additional PKI for reverse proxy instances, ect.</dt><dd><ul class="simple">
+<li><p>This demo assumes you will generate a key/certificate for the reverse proxy that is signed by an external
+Certificate Authority</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Obtain a copy of the template files and mapping rules used by this demo. The latest version of these files is
+available <a class="reference external" href="https://github.com/lachlan-ibm/ibmvia_autoconf/tree/stable/examples/mmfa_demo">here</a>.</p></li>
+<li><p>Create the Kubernetes ConfigMaps and Secrets required for this demo.</p></li>
+<li><p>Update your local environment to resolve the domain <code class="docutils literal notranslate"><span class="pre">www.myidp.ibm.com</span></code> to the web reverse proxy interface and port</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is often as simple as updating your hosts file to map this domain to your wrp container or ingress route.</p>
+</div>
+</li>
+</ul>
+<p>More detailed steps to create the required keys, certificates and kubernetes objects can be found in
+the <a class="reference external" href="https://github.com/lachlan-ibm/ibmvia_autoconf/tree/stable/examples/mmfa_demo/README.md">MMFA demo readme</a>.</p>
+</section>
+<section id="mobile-multi-factor-authentication-configuration">
+<span id="example-mmfa-yaml"></span><h3>Mobile Multi-Factor Authentication Configuration:<a class="headerlink" href="#mobile-multi-factor-authentication-configuration" title="Link to this heading"></a></h3>
+<details class="summary-click-to-see-the-yaml-configuration">
+<summary>Click to see the YAML configuration.</summary><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>container:
+  admin_cfg:
+    session_timeout: 720
+  management_authorization:
+    authorization_enforcement: True
+    roles:
+    - operation: &quot;update&quot;
+      name: &quot;Configuration Service&quot;
+      users:
+      - name: &quot;cfgsvc&quot;
+        type: &quot;local&quot;
+      features:
+      - name: &quot;shared_volume&quot;
+        access: &quot;w&quot;
+  ssl_certificates:
+  - name: &quot;wrp_trust_store&quot;
+    personal_certificates:
+    - p12_file: &quot;www.mmfa.ibm.com.p12&quot;
+      name: mmfa-key
+      password: !environment MMFAKEYP12_SECRET
+    signer_certificates:
+    - &quot;ssl_certificates/&quot;
+  - name: &quot;lmi_trust_store&quot;
+    signer_certificates:
+    - &quot;ssl_certificates/postgresql.pem&quot;
+    - &quot;ssl_certificates/ldap.pem&quot;
+  - name: &quot;rt_profile_keys&quot;
+    signer_certificates:
+    - &quot;ssl_certificates/postgresql.pem&quot;
+    - &quot;ssl_certificates/ldap.pem&quot;
+    - &quot;ssl_certificates/GeoTrustGlobalCA.pem&quot;
+  cluster:
+    runtime_database:
+      host: !environment HVDB_HOST
+      port: !environment HVDB_PORT
+      type: &quot;postgresql&quot;
+      user: !environment HVDB_USER
+      password: !environment HVDB_PW
+      ssl: True
+      db_name: !environment HVDB_DB
+  activation: #Activation codes
+    webseal: !environment IVIA_BASE_CODE
+    access_control: !environment IVIA_AAC_CODE
+  advanced_tuning_parameters:
+  - name: &quot;scim_demo_enabled&quot;
+    value: &quot;true&quot;
+  advanced_configuration:
+  - name: &quot;mmfa.devicePrompt.skipIfOneDevice&quot;
+    value: &quot;true&quot;
+  - name: &quot;live.demos.enabled&quot;
+    value: &quot;true&quot;
+  - name: &quot;live.demos.settings&quot;
+    value: !environment LIVE_DEMO_CONFIG
+  - name: &quot;riskEngine.reportsEnabled&quot;
+    value: &quot;true&quot;
+  - name: &quot;attributeCollection.enableGetAttributes&quot;
+    value: &quot;true&quot;
+  - name: &quot;attributeCollection.cookieName&quot;
+    value: &quot;ac.uuid&quot;
+  - name: &quot;attributeCollection.serviceLocation&quot;
+    value: &quot;/mga&quot;
+  - name: &quot;attributeCollection.authenticationContextAttributes&quot;
+    value: &quot;resource,action,ac.uuid,header:userAgent,transferAmount&quot;
+  server_connections:
+  - name: &quot;wrp_runtime&quot;
+    description: &quot;Connection to LDAP user registry&quot;
+    type: &quot;isamruntime&quot;
+    properties:
+      bind_dn: !environment LDAP_BIND_DN
+      bind_pwd: !environment LDAP_BIND_PW
+      ssl: True
+      ssl_truststore: &quot;lmi_trust_store&quot;
+  - name: &quot;localscim&quot;
+    description: &quot;Local SCIM Server&quot;
+    type: &quot;ws&quot;
+    properties:
+      url: &quot;https://mmfa-runtime:9443/scim&quot;
+      user: !environment RUNTIME_USER
+      password: !environment RUNTIME_PASSWORD
+      ssl: True
+      key_file: &quot;rt_profile_keys&quot;
+  template_files:
+  - &quot;template_files.zip&quot;
+  mapping_rules:
+  - type: &quot;InfoMap&quot;
+    files:
+    - &quot;mapping_rules/&quot;
+webseal:
+  runtime:    
+    policy_server: &quot;ldap&quot;
+    user_registry: &quot;ldap&quot;
+    ldap:
+      host: !environment LDAP_HOST
+      port: !environment LDAP_PORT
+      dn: !environment LDAP_BIND_DN
+      dn_password: !environment LDAP_BIND_PW
+      key_file: &quot;lmi_trust_store&quot;
+    clean_ldap: True
+    domain: &quot;Default&quot;
+    admin_user: &quot;sec_master&quot;
+    admin_password: !environment LDAP_SEC_PW
+    admin_cert_lifetime: 1460
+    ssl_compliance: &quot;fips&quot;
+  pdadmin:
+    pops:
+    - name: &quot;level1pop&quot;
+      description: &quot;Level 1 POP&quot;
+      ip_auth:
+        anyother: &quot;1&quot;
+    - name: &quot;level0pop&quot;
+      description: &quot;Level 0 POP&quot;
+    users:
+    - username: &quot;scimadmin&quot;
+      dn: &quot;cn=scimadmin,dc=ibm,dc=com&quot;
+      password: !environment TEST_PASSWORD
+    - username: &quot;testuser&quot;
+      dn: &quot;cn=testuser,dc=ibm,dc=com&quot;
+      password: !environment TEST_PASSWORD
+    groups:
+    - name: &quot;adminGroup&quot;
+      dn: &quot;cn=adminGroup,dc=ibm,dc=com&quot;
+      description: &quot;adminGroup&quot;
+      users:
+      - &quot;scimAdmin&quot;
+    reverse_proxies:
+    - host: &quot;mmfa-wrp-browser&quot;
+      instance: &quot;default&quot;
+      acls:
+      - name: &quot;isam_mobile_anyauth&quot;
+        junctions:
+        - &quot;/app/mobile-demo&quot;
+      - name: &quot;isam_mobile_unauth&quot;
+        junctions:
+        - &quot;/app/mobile-demo/theme&quot;
+        - &quot;/app/mobile-demo/oauth/oauth2Client.jsp&quot;
+      - name: &quot;isam_mobile_rest&quot;
+        junctions:
+        - &quot;/scim&quot;
+      - name: &quot;isam_mobile_rest_unauth&quot;
+        junctions:
+        - &quot;/mga/websock/mmfa-wss&quot;
+      pops:
+      - name: &quot;level1pop&quot;
+        junctions:
+        - &quot;&quot;
+      - name: &quot;level0pop&quot;
+        junctions:
+        - &quot;/mga/sps/authsvc&quot;
+        - &quot;/mga/sps/apiauthsvc&quot;
+        - &quot;/mga/sps/static&quot;
+        - &quot;/mga/sps/ac&quot;
+        - &quot;/mga/websock/mmfa-wss&quot;
+    - host: &quot;mmfa-wrp-browser&quot;
+      instance: &quot;mobile&quot;
+      acls:
+      - name: &quot;isam_mobile_rest&quot;
+        junctions:
+        - &quot;/scim&quot;
+    objects:
+    - host: &quot;mmfa-wrp-browser&quot;
+      instance: &quot;default&quot;
+      junction: &quot;/app&quot;
+      attributes:
+      - key: &quot;HTTP-Tag-Value&quot;
+        value: &quot;AUTHENTICATION_LEVEL=authentication_level&quot;
+  reverse_proxy:
+  - name: &quot;default&quot;
+    host: &quot;mmfa-wrp-browser&quot;
+    http:
+      enabled: &quot;no&quot;
+    https:
+      enabled: &quot;yes&quot;
+    domain: &quot;Default&quot;
+    ldap:
+      ssl: &quot;yes&quot;
+      port: !environment LDAP_PORT
+      key_file: &quot;lmi_trust_store&quot;
+    management_root:
+    - &quot;reverse_proxy.zip&quot;
+    mmfa_configuration:
+      channel: &quot;browser&quot;
+      lmi:
+        host: &quot;mmfa-config&quot;
+        port: &quot;9443&quot;
+        username: admin
+        password: !environment IVIA_MGMT_PASSWORD
+      runtime:
+        host: &quot;mmfa-runtime&quot;
+        port: &quot;9443&quot;
+        username: !environment RUNTIME_USER
+        password: !environment RUNTIME_PASSWORD
+      reuse_acls: True
+      reuse_certs: True
+    aac_configuration:
+      junction: &quot;/mga&quot;
+      runtime:
+        host: &quot;mmfa-runtime&quot;
+        port: &quot;9443&quot;
+        username: !environment RUNTIME_USER
+        password: !environment RUNTIME_PASSWORD
+      reuse_acls: True
+      reuse_certs: True
+    junctions:
+    - junction_point: &quot;/app&quot;
+      junction_type: &quot;ssl&quot;
+      server_hostname: &quot;mmfa-runtime&quot;
+      server_port: &quot;9443&quot;
+      remote_http_header:
+      - &quot;iv-user&quot;
+      - &quot;iv-groups&quot;
+      - &quot;iv-creds&quot;
+    - junction_point: &quot;/stepup&quot;
+      junction_type: &quot;ssl&quot;
+      server_hostname: &quot;mmfa-runtime&quot;
+      server_port: &quot;9443&quot;
+      basic_auth_mode: &quot;ignore&quot;
+      insert_session_cookies: &quot;yes&quot;
+      client_ip_http: &quot;yes&quot;
+      remote_http_header:
+      - &quot;iv-user&quot;
+      - &quot;iv-user-l&quot;
+      - &quot;iv-groups&quot;
+      - &quot;iv-creds&quot;
+      junction_cookie_javascript_block: &quot;inhead&quot;
+    stanza_configuration:
+    - stanza: &quot;server&quot;
+      entry_name: &quot;web-host-name&quot;
+      value: &quot;www.mmfa.ibm.com&quot;
+      operation: &quot;update&quot;
+    - stanza: &quot;server&quot;
+      entry_name: &quot;force-tag-value-prefix&quot;
+      value: &quot;no&quot;
+      operation: &quot;update&quot;
+    - stanza: &quot;ssl&quot;
+      entry_name: &quot;webseal-cert-keyfile&quot;
+      value: &quot;wrp_trust_store&quot;
+      operation: &quot;update&quot;
+    - stanza: &quot;ssl&quot;
+      entry_name: &quot;webseal-cert-keyfile-stash&quot;
+      value: &quot;wrp_trust_store.sth&quot;
+      operation: &quot;update&quot;
+    - stanza: &quot;ssl&quot;
+      entry_name: &quot;webseal-cert-keyfile-label&quot;
+      value: &quot;CN=mmfa.ibm.com,OU=Security,O=IBM,C=AU&quot;
+      operation: &quot;update&quot;
+    - stanza: &quot;authentication-levels&quot;
+      entry_id: &quot;level&quot;
+      value: &quot;ext-auth-interface&quot;
+      operation: &quot;add&quot;
+    - stanza: &quot;authentication-levels&quot;
+      entry_id: &quot;level&quot;
+      value: &quot;password&quot;
+      operation: &quot;add&quot;
+    - stanza: &quot;azn-decision-info&quot;
+      entry_id: &quot;urn:ibm:demo:transferamount&quot;
+      value: &quot;post-data:transaction-amount&quot;
+      operation: &quot;add&quot;
+    - stanza: &quot;user-attribute-definitions&quot;
+      entry_id: &quot;urn:ibm:security:worklight:version:platform.category&quot;
+      value: &quot;Environment&quot;
+      operation: &quot;add&quot;
+    - stanza: &quot;user-attribute-definitions&quot;
+      entry_id: &quot;urn:ibm:security:worklight:version:platform.datatype&quot;
+      value: &quot;string&quot;
+      operation: &quot;add&quot;
+    - stanza: &quot;user-attribute-definitions&quot;
+      entry_id: &quot;urn:ibm:demo:transferamount.datatype&quot;
+      value: &quot;double&quot;
+      operation: &quot;add&quot;
+    - stanza: &quot;user-attribute-definitions&quot;
+      entry_id: &quot;urn:ibm:demo:transferamount.category&quot;
+      value: &quot;Environment&quot;
+      operation: &quot;add&quot;
+    - stanza: &quot;eai-trigger-urls&quot;
+      entry_id: &quot;trigger&quot;
+      value: &quot;/stepup/sps/authsvc*&quot;
+      operation: &quot;add&quot;
+  - name: &quot;mobile&quot;
+    host: &quot;mmfa-wrp-mobile&quot;
+    http:
+      enabled: &quot;no&quot;
+    https:
+      enabled: &quot;yes&quot;
+    domain: &quot;Default&quot;
+    ldap:
+      ssl: &quot;yes&quot;
+      port: !environment LDAP_PORT
+      key_file: &quot;lmi_trust_store&quot;
+    mmfa_configuration:
+      channel: &quot;mobile&quot;
+      lmi:
+        host: &quot;mmfa-config&quot;
+        port: &quot;9443&quot;
+        username: admin
+        password: !environment IVIA_MGMT_PASSWORD
+      runtime:
+        host: &quot;mmfa-runtime&quot;
+        port: &quot;9443&quot;
+        username: !environment RUNTIME_USER
+        password: !environment RUNTIME_PASSWORD
+      reuse_acls: True
+      reuse_certs: True
+    aac_configuration:
+      junction: &quot;/mga&quot;
+      runtime:
+        host: &quot;mmfa-runtime&quot;
+        port: &quot;9443&quot;
+        username: !environment RUNTIME_USER
+        password: !environment RUNTIME_PASSWORD
+      reuse_acls: True
+      reuse_certs: True
+    junctions:
+    - junction_point: &quot;/scim&quot;
+      junction_type: &quot;ssl&quot;
+      transparent_path_junction: &quot;yes&quot;
+      server_hostname: &quot;mmfa-runtime&quot;
+      server_port: &quot;9443&quot;
+      username: !environment RUNTIME_USER
+      password: !environment RUNTIME_PASSWORD
+      remote_http_header:
+      - &quot;iv-user&quot;
+      - &quot;iv-groups&quot;
+      - &quot;iv-creds&quot;
+    stanza_configuration:
+    - stanza: &quot;server&quot;
+      entry_name: &quot;web-host-name&quot;
+      value: &quot;www.mmfa.ibm.com&quot;
+      operation: &quot;update&quot;
+    - stanza: &quot;server&quot;
+      entry_name: &quot;force-tag-value-prefix&quot;
+      value: &quot;no&quot;
+      operation: &quot;update&quot;
+    - stanza: &quot;ssl&quot;
+      entry_name: &quot;webseal-cert-keyfile&quot;
+      value: &quot;wrp_trust_store&quot;
+      operation: &quot;update&quot;
+    - stanza: &quot;ssl&quot;
+      entry_name: &quot;webseal-cert-keyfile-stash&quot;
+      value: &quot;wrp_trust_store.sth&quot;
+      operation: &quot;update&quot;
+    - stanza: &quot;ssl&quot;
+      entry_name: &quot;webseal-cert-keyfile-label&quot;
+      value: &quot;CN=mmfa.ibm.com,OU=Security,O=IBM,C=AU&quot;
+      operation: &quot;update&quot;
+    - stanza: &quot;filter-content-types&quot;
+      entry_name: &quot;type&quot;
+      value: &quot;application/scim+json&quot;
+      operation: &quot;add&quot;
+    - stanza: &quot;script-filtering&quot;
+      entry_id: &quot;script-filter&quot;
+      value: &quot;yes&quot;
+      operation: &quot;update&quot;
+    - stanza: &quot;script-filtering&quot;
+      entry_id: &quot;rewrite-absolute-with-absolute&quot;
+      value: &quot;yes&quot;
+      operation: &quot;update&quot;
+access_control:
+  scim:
+    schemas:
+    - uri: &quot;urn:ietf:params:scim:schemas:core:2.0:User&quot;
+      properties:
+        connection_type: &quot;isamruntime&quot;
+        ldap_connection: &quot;wrp_runtime&quot;
+        search_suffix: &quot;dc=ibm,dc=com&quot;
+        user_suffix: &quot;dc=ibm,dc=com&quot;
+        user_id: &quot;cn&quot;
+    - uri: &quot;urn:ietf:params:scim:schemas:extension:isam:1.0:User&quot;
+      properties:
+        ldap_connection: &quot;isamruntime&quot;
+        isam_domain: &quot;Default&quot;
+        update_native_users: True
+        connection_type: &quot;isamruntime&quot;
+    attribute_modes:
+    - schema: &quot;urn:ietf:params:scim:schemas:extension:isam:1.0:MMFA:Transaction&quot;
+      modes:
+      - attribute: &quot;transactionsPending&quot;
+        mode: &quot;readwrite&quot;
+      - attribute: &quot;transactionsPending&quot;
+        subattribute: &quot;txnStatus&quot;
+        mode: &quot;readwrite&quot;
+  api_protection:
+    definitions:
+    - name: &quot;Authenticator&quot;
+      description: &quot;MMFA Authenticatior&quot;
+      grant_types:
+      - &quot;AUTHORIZATION_CODE&quot;
+      enforce_single_use_grant: True
+      post_token_mapping_rule: mapping_rules/mmfa_oauth_posttoken_mapping.js
+    clients:
+    - name: &quot;AuthenticatorClient&quot;
+      description: &quot;Authenticator Client&quot;
+      client_id: &quot;AuthenticatorClient&quot;
+      company_name: &quot;IBM&quot;
+      redirect_uris:
+      - &quot;https://www.mmfa.ibm.com/mga/sps/mmfa/user/mgmt/html/mmfa/qr_code.html?client_id=AuthenticatorClient&quot;
+  mmfa:
+    client_id: &quot;AuthenticatorClient&quot;
+    endpoints:
+      details_url: &quot;https://mmfa-browser-wrp:9443/mga/sps/mmfa/user/mgmt/details&quot;
+      token_endpoint: &quot;https://mmfa-browser-wrp:9443/mga/sps/oauth/oauth20/token&quot;
+      hotp_shared_secret_endpoint: &quot;https://mmfa-browser-wrp:9443/mga/sps/mga/user/mgmt/otp/hotp&quot;
+      totp_shared_secret_endpoint: &quot;https://mmfa-browser-wrp:9443/mga/sps/mga/user/mgmt/otp/totp&quot;
+      enrollment_endpoint: &quot;https://mmfa-browser-wrp:9443/scim/Me&quot;
+      authntrxn_endpoint:  &quot;https://mmfa-browser-wrp:9443/scim/Me?attributes=urn:ietf:params:scim:schemas:extension:isam:1.0:MMFA:Transaction:transactionsPending,urn:ietf:params:scim:schemas:extension:isam:1.0:MMFA:Transaction:attributesPending&quot;
+      mobile_endpoint_prefix: &quot;https://mmfa-browser-wrp:9443/mga&quot;
+    discovery_mechanisms:
+    - &quot;urn:ibm:security:authentication:asf:mechanism:mobile_user_approval:fingerprint&quot;
+    - &quot;urn:ibm:security:authentication:asf:mechanism:mobile_user_approval:user_presence&quot;
+    - &quot;urn:ibm:security:authentication:asf:mechanism:totp&quot;
+    options: &quot;ignoreSslCerts=true&quot;
+  authentication:
+    policies:
+    - name: &quot;MMFA Initiate Login Policy&quot;
+      uri: &quot;urn:ibm:security:authentication:asf:mmfa_initiate_simple_login&quot;
+      description: &quot;IBM MMFA Login Policy&quot;
+      enable: True
+      policy: &quot;TODO&quot;
+    - name: &quot;MMFA User Presence Response&quot;
+      uri: &quot;urn:ibm:security:authentication:asf:mmfa_response_userpresence&quot;
+      description: &quot;IBM MMFA Demo User Presence challenge response&quot;
+      enabled: True
+      policy: &quot;TODO&quot;
+    - name: &quot;MMFA Transfer Demo Initiate Policy&quot;
+      description: &quot;IBM MMFA Banking Demo example transaction initiate policy&quot;
+      uri: &quot;urn:ibm:security:authentication:asf:mmfa_initiate_demotransfer&quot;
+      enabled: True
+      policy: &quot;TODO&quot;
+    - name: &quot;MMFA Fingerprint Response&quot;
+      uri: &quot;urn:ibm:security:authentication:asf:mmfa_response_fingerprint&quot;
+      description: &quot;IBM MMFA Demo Fingerprint challenge response&quot;
+      enabled: True
+      policy: &quot;TODO&quot;
+    - name: &quot;Username Login&quot;
+      description: &quot;Username-only Login&quot;
+      uri: &quot;urn:ibm:security:authentication:asf:username_login&quot;
+      enabled: True
+      policy: &quot;TODO&quot;
+    - name: &quot;Set Authentication Level&quot;
+      description: &quot;Set authentication level&quot;
+      uri: &quot;urn:ibm:security:authentication:asf:set_authentication_level&quot;
+      enabled: True
+      policy: &quot;TODO&quot;
+    - name: &quot;MMFA Stepup Login Recaptcha&quot;
+      description: &quot;MMFA Stepup Login Recaptcha&quot;
+      uri: &quot;urn:ibm:security:authentication:asf:mmfa_initiate_stepup_login_recaptcha&quot;
+      enabled: True
+      policy: &quot;TODO&quot;
+    - name: &quot;MMFA Stepup Login&quot;
+      description: &quot;MMFA Stepup Login&quot;
+      uri: &quot;urn:ibm:security:authentication:asf:mmfa_initiate_stepup_login&quot;
+      enabled: True
+      policy: &quot;TODO&quot;
+    mechanisms:
+    - name: &quot;Set Authentication Level&quot;
+      description: &quot;Set authentication level&quot;
+      uri: &quot;urn:ibm:security:authentication:asf:mechanism:set_authentication_level&quot;
+      properties:
+      - mapping_rule: &quot;SetAuthenticationLevel&quot;
+      - template_file: &quot;/authsvc/authenticator/setauthenticationlevel/error.html&quot;
+    - name: &quot;MMFA Demo Transfer Amount Message&quot;
+      description: &quot;MMFA example information mapping for transaction amount&quot;
+      type: &quot;InfoMapAuthenticationName&quot;
+      uri: &quot;urn:ibm:security:authentication:asf:mechanism:demotransfer&quot;
+      properties:
+      - mapping_rule: &quot;DemoTransferAmount&quot;
+      - template_file: &quot;&quot;
+    - name: &quot;RememberMe Username Login&quot;
+      description: &quot;RememberMe Username Login&quot;
+      type: &quot;InfoMapAuthenticationName&quot;
+      uri: &quot;urn:ibm:security:authentication:asf:mechanism:username_remember_me&quot;
+      properties:
+      - mapping_rule: &quot;RememberMeUsername&quot;
+      - template_file: &quot;/authsvc/authenticator/rememberme/username.html&quot;
+    - name: &quot;Verify Stepup Via CBA&quot;
+      description: &quot;Verify Stepup Via CBA&quot;
+      type: &quot;InfoMapAuthenticationName&quot;
+      uri: &quot;urn:ibm:security:authentication:asf:mechanism:verify_stepup_via_cba&quot;
+      properties:
+      - mapping_rule: &quot;VerifyStepupViaCBA&quot;
+      - template_file: &quot;/authsvc/authenticator/verifystepupviacba/error.html&quot;
+    - name: &quot;BuildMMFAStepupLoginPrompt&quot;
+      description: &quot;Build MMFA Stepup Login Prompt&quot;
+      type: &quot;InfoMapAuthenticationName&quot;
+      uri: &quot;urn:ibm:security:authentication:asf:mechanism:stepup_login_prompt&quot;
+      properties:
+      - mapping_rule: &quot;BuildMMFAStepupLoginPrompt&quot;
+      - template_file: &quot;/authsvc/authenticator/buildmmfastepuploginprompt/error.html&quot;
+    - name: &quot;SCIM Endpoint Configuration&quot;
+      type: &quot;SCIM&quot;
+      description: &quot;SCIM Endpoint Configuration&quot;
+      uri: &quot;urn:ibm:security:authentication:asf:mechanism:scim&quot;
+      properties:
+        server.connection: &quot;localscim&quot;
+    - name: &quot;reCAPTCHA Verification&quot;
+      type: &quot;recaptcha&quot;
+      uri: &quot;urn:ibm:security:authentication:asf:mechanism:recaptcha&quot;
+      properties:
+        recaptcha.secret.key: !environment RECAPTCHA_SECRET_KEY
+        recaptcha.site.key: !environment RECAPTCHA_SITT_KEY
+        recaptcha.template.page: &quot;/authsvgc/authenticator/recaptcha/standalone.html&quot;
+  attributes:
+  - name: &quot;transferAmount&quot;
+    description: &quot;The transaction-amount POST parameter sent to result.jsp&quot;
+    uri: &quot;urn:ibm:demo:transferamount&quot;
+    category: &quot;Environment&quot;
+    datatype: &quot;double&quot;
+    matcher: &quot;exact-match&quot;
+    type: &quot;Policy&quot;
+  - name: &quot;fingerprintCookie&quot;
+    description: &quot;Persistent cookie for tagging browsers to achieve device registration&quot;
+    uri: &quot;urn:ibm:security:environment:fingerprintCookie&quot;
+    category: &quot;Environment&quot;
+    storage:
+    - &quot;device&quot;
+    - &quot;session&quot;
+    type: &quot;Risk&quot;
+    datatype: &quot;string&quot;
+    matcher: &quot;exact-match&quot;
+  - name: &quot;RememberMe&quot;
+    description: &quot;Remember Me&quot;
+    uri: &quot;rememberme&quot;
+    type: &quot;Policy&quot;
+    category: &quot;Subject&quot;
+    datatype: &quot;string&quot;
+    matcher: &quot;exact-match&quot;
+  access_control:
+    risk_profiles:
+    - name: &quot;BrowserFingerprintCookie&quot;
+      description: &quot;Browser Fingerprint Cookie Profile&quot;
+      attributes:
+      - name: &quot;fingerprintCookie&quot;
+        weight: 50
+      active: True
+    policies:
+    - name: &quot;MMFA Demo Transfer Policy&quot;
+      description: &quot;Trigger MMFA transaction verification for transaction-amount greater than or equal to 1000&quot;
+      policy: &quot;TODO&quot;
+    - name: &quot;Stepup Login Policy&quot;
+      description: &quot;Permits step-up login via MMFA. If user not coming from trusted device, requires recaptcha as well.&quot;
+      policy: &quot;TODO&quot;
+    resources:
+    - server: &quot;mmfa-wrp-browser&quot;
+      resource_uri: &quot;/app/mobile-demo/payload/result.jsp&quot;
+      policies:
+      - &quot;MMFA Demo Transfer Policy&quot;
+      cache: 0
+    - server: &quot;mmfa-wrp-browser&quot;
+      resource_uri: &quot;/stepup&quot;
+      policies:
+      - &quot;Stepup Login Policy&quot;
+      cache: 0
+  push_notification_providers:
+  - platform: &quot;android&quot;
+    app_id: !environment ANDROID_APP_ID
+    provider: &quot;imc&quot;
+    provider_address: !environment PUSH_PROVIDER_HOST
+    imc_client_id: !environment ANDROID_CLIENT_ID
+    imc_client_secret: !environment ANDROID_CLIENT_SECRET
+    imc_refresh_token: !environment ANDROID_REFRESH_TOKEN
+    imc_app_key: !environment ANDROID_APP_KEY
+  - platform: &quot;apple&quot;
+    app_id: !environment APPLE_APP_ID
+    provider: &quot;imc&quot;
+    imc_client_id: !environment APPLE_CLIENT_ID
+    imc_client_secret: !environment APPLE_CLIENT_SECRET
+    imc_refresh_token: !environment APPLE_REFRESH_TOKEN
+    imc_app_key: !environment APPLE_APP_KEY
+</pre></div>
+</div>
+</details></section>
+<section id="testing-it-out">
+<h3>Testing it out<a class="headerlink" href="#testing-it-out" title="Link to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">https://www.myidp.ibm.com/mga/sps/mmfa?TO=DO</span></code></p>
+</section>
+</section>
+<section id="federation-cookbook">
+<h2>Federation Cookbook<a class="headerlink" href="#federation-cookbook" title="Link to this heading"></a></h2>
+<p>The Federation example follows the legacy cookbook deployment guide. This guide configures the SAML and OIDC Federated
+identity capabilities of Verify Identity Access. For this demo, both the IDP and SP roles are performed by Verify Identity Access, either
+can be substituted with a different identity provider or consumer, as long as they are compliant with the relevant
+identity standard.</p>
+<p>To successfully run this demo there are some pre-requisites which your environment must meet.</p>
+<section id="id3">
+<h3>Before you start<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<ul>
+<li><dl class="simple">
+<dt>Create the PKI for the IDP and SP deployments.</dt><dd><ul class="simple">
+<li><p>Demo assumes self-signed certificates</p></li>
+<li><p>Require keys and certificates for: IDP wrp, SP wrp, IDP LDAP, SP LDAP, IDP runtime database,
+SP runtime database</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Obtain a copy of the required JavaScript mapping rules for this demo. The latest version of these files is
+available <a class="reference external" href="https://github.com/lachlan-ibm/ibmvia_autoconf/tree/stable/examples/federation_demo">here</a>.</p></li>
+<li><p>Create the Kubernetes ConfigMaps and Secrets required for this demo.</p></li>
+<li><dl class="simple">
+<dt>Create the configuration, web reverse proxy, and runtime Verify Identity Access containers.</dt><dd><ul class="simple">
+<li><p>This demo requires the IDP and SP to both have wrp and runtime containers deployed.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Update your local environment to resolve the domain <code class="docutils literal notranslate"><span class="pre">www.myidp.ibm.com</span></code> to the IDP web reverse proxy interface
+and port; and <code class="docutils literal notranslate"><span class="pre">www.mysp.ibm.com</span></code> to the SP reverse proxy interface and port.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is often as simple as updating your hosts file to map this domain to your wrp container or ingress route.</p>
+</div>
+</li>
+</ul>
+<p>More detailed steps to create the required keys, certificates and kubernetes objects can be found in
+the <a class="reference external" href="https://github.com/lachlan-ibm/ibmvia_autoconf/tree/stable/examples/federation_demo/README.md">Federation demo readme</a>.</p>
+</section>
+<section id="example-idp-yaml">
+<span id="idp-configuration"></span><h3>IdP Configuration:<a class="headerlink" href="#example-idp-yaml" title="Link to this heading"></a></h3>
+<details class="summary-click-to-see-the-yaml-configuration">
+<summary>Click to see the YAML configuration.</summary><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>container:
+  admin_cfg:
+    session_timeout: 720
+  management_authorization:
+    authorization_enforcement: True
+    roles:
+    - operation: &quot;update&quot;
+      name: &quot;Configuration Service&quot;
+      users:
+      - name: &quot;cfgsvc&quot;
+        type: &quot;local&quot;
+      features:
+      - name: &quot;shared_volume&quot;
+        access: &quot;w&quot;
+  ssl_certificates:
+  - name: &quot;myidpkeys&quot;
+    personal_certificates:
+    - p12_file: &quot;idpkeys.p12&quot;
+      name: myidpkey
+      password: !environment IDPKEYSP12_SECRET
+    signer_certificates:
+    - &quot;sp.pem&quot;
+  - name: &quot;lmi_trust_store&quot;
+    signer_certificates:
+    - &quot;postgresql.pem&quot;
+    - &quot;ldap.pem&quot;
+  - name: &quot;rt_profile_keys&quot;
+    signer_certificates:
+    - &quot;postgresql.pem&quot;
+    - &quot;ldap.pem&quot;
+  cluster:
+    runtime_database:
+      host: !environment IDP_HVDB_HOST
+      port: !environment HVDB_PORT
+      type: &quot;postgresql&quot;
+      user: !environment HVDB_USER
+      password: !environment HVDB_PW
+      ssl: True
+      db_name: !environment HVDB_DB
+  activation: #Activation codes
+    webseal: !environment IVIA_BASE_CODE
+    access_control: !environment IVIA_AAC_CODE
+    federation: !environment IVIA_FED_CODE
+  mapping_rules:
+  - type: &quot;saml2&quot;
+    files:
+    - &quot;mapping_rules/idp/ip_saml20.js&quot;
+    - &quot;mapping_rules/idp/ip_post_ldap.js&quot;
+    - &quot;mapping_rules/idp/ip_pre_ldap.js&quot;
+    - &quot;mapping_rules/idp/ip_saml20_httpclient.js&quot;
+    - &quot;mapping_rules/idp/ip_saml20_httpclient_wstrust.js&quot;
+    - &quot;mapping_rules/idp/ip_saml20.js&quot;
+    - &quot;mapping_rules/idp/ivc_to_ltpa.js&quot;
+    - &quot;mapping_rules/idp/ivc_to_passticket.js&quot;
+    - &quot;mapping_rules/idp/ivc_to_saml20.js&quot;
+    - &quot;mapping_rules/idp/saml20_ivc_to_saml20.js&quot;
+    - &quot;mapping_rules/idp/saml20_to_saml20.js&quot;
+    - &quot;mapping_rules/idp/stsuutostsuu.js&quot;
+    - &quot;mapping_rules/idp/ut_to_saml20.js&quot;
+  server_connections:
+  - name: &quot;idp-ldap&quot;
+    type: &quot;ldap&quot;
+    description: &quot;A connection to IDP LDAP.&quot;
+    locked: false
+    properties:
+      hostname: !environment IDP_LDAP_HOST
+      port: 636
+      bind_dn: &quot;cn=root,secAuthority=Default&quot;
+      bind_password: !environment LDAP_BIND_PW
+      ssl: true
+      key_file: &quot;lmi_trust_store&quot;
+  attribute_sources:
+  - name: &quot;PhoneNumber&quot;
+    type: &quot;ldap&quot;
+    value: &quot;honePhone&quot;
+    properties:
+    - key: &quot;serverConnection&quot;
+      value: &quot;idp-ldap&quot;
+    - key: &quot;scope&quot;
+      value: &quot;subtree&quot;
+    - key: &quot;selector&quot;
+      value: &quot;displayName&quot;
+    - key: &quot;searchFilter&quot;
+      value: &quot;(objectClass=*)&quot;
+    - key: &quot;baseDN&quot;
+      value: &quot;dc=ibm,dc=com&quot;
+  - name: &quot;DisplayName&quot;
+    type: &quot;ldap&quot;
+    value: &quot;displayName&quot;
+    properties:
+    - key: &quot;serverConnection&quot;
+      value: &quot;idp-ldap&quot;
+    - key: &quot;scope&quot;
+      value: &quot;Subtree&quot;
+    - key: &quot;selector&quot;
+      value: &quot;homePhone&quot;
+    - key: &quot;searchFilter&quot;
+      value: &quot;(objectClass=*)&quot;
+    - key: &quot;baseDN&quot;
+      value: &quot;dc=ibm,dc=com&quot;
+  access_policies:
+  - name: &quot;AccessPolicyForPrompt&quot;
+    type: &quot;JavaScript&quot;
+    category: &quot;OIDC&quot;
+    policy_file: &quot;mapping_rules/idp/accesspolicy_prompt.js&quot;
+  advanced_configuration:
+  - name: &quot;live.demos.enabled&quot;
+    value: &quot;true&quot;
+  - name: &quot;live.demos.settings&quot;
+    value: !environment IDP_LIVE_DEMO_CONFIG
+webseal:
+  runtime:
+    policy_server: &quot;ldap&quot;
+    user_registry: &quot;ldap&quot;
+    ldap:
+      host: !environment IDP_LDAP_HOST
+      port: !environment LDAP_PORT
+      dn: !environment LDAP_BIND_DN
+      dn_password: !environment LDAP_BIND_PW
+      key_file: &quot;lmi_trust_store&quot;
+    clean_ldap: True
+    domain: &quot;Default&quot;
+    admin_user: &quot;sec_master&quot;
+    admin_password: !environment LDAP_SEC_PW
+    admin_cert_lifetime: 1460
+    ssl_compliance: &quot;fips&quot;
+  pdadmin:
+    acls:
+    - name: &quot;sts-unauth&quot;
+      groups:
+      - name: &quot;iv-admin&quot;
+        permissions: &quot;TcmdbsvaBRrxl&quot;
+      - name: &quot;webseal-servers&quot;
+        permissions: &quot;Tgmdbsrxl&quot;
+      users:
+      - name: &quot;sec_master&quot;
+        permissions: &quot;TcmdbsvaBRrxl&quot;
+      any_other: &quot;Tr&quot;
+      unauthenticated: &quot;Tr&quot;
+    - name: &quot;unauth-oidc&quot;
+      groups:
+      - name: &quot;iv-admin&quot;
+        permissions: &quot;TcmdbsvaBRrxl&quot;
+      - name: &quot;webseal-servers&quot;
+        permissions: &quot;Tgmdbsrxl&quot;
+      users:
+      - name: &quot;sec_master&quot;
+        permissions: &quot;TcmdbsvaBRrxl&quot;
+      any-other: &quot;Tr&quot;
+      unauthenticated: &quot;Tr&quot;
+    users:
+    - username: &quot;testuser&quot;
+      dn: &quot;cn=testuser,dc=ibm,dc=com&quot;
+      password: !environment TEST_PASSWORD
+    reverse_proxies:
+    - host: &quot;isva-idp-webseal&quot;
+      instance: &quot;default&quot;
+      acls:
+      - name: &quot;unauth-oidc&quot;
+        junctions:
+        - &quot;/mga/sps/auth&quot;
+      - name: &quot;sts-unauth&quot;
+        junctions:
+        - &quot;/isam/TrustServer/SecurityTokenService&quot;
+        - &quot;/isam/TrustServerWST13/services/RequestSecurityToken&quot;
+      - name: &quot;default-webseal&quot;
+        junctions:
+        - &quot;/isam/mobile-demo&quot;
+  reverse_proxy:
+  - name: &quot;default&quot;
+    host: &quot;isva-idp-webseal&quot;
+    http:
+      enabled: &quot;no&quot;
+    https:
+      enabled: &quot;yes&quot;
+    domain: &quot;Default&quot;
+    ldap:
+      ssl: &quot;yes&quot;
+      port: !environment LDAP_PORT
+      key_file: &quot;lmi_trust_store&quot;
+    aac_configuration:
+      runtime:
+        hostname: &quot;isva-idp-runtime&quot;
+        port: &quot;9443&quot;
+        username: !environment RUNTIME_USER
+        password: !environment RUNTIME_PASSWORD
+      junction: &quot;/mga&quot;
+      reuse_acls: True
+      reuse_certs: True
+    api_protection_configuration:
+      junction: &quot;/mga&quot;
+      runtime:
+        hostname: &quot;isva-idp-runtime&quot;
+        port: &quot;9443&quot;
+        username: !environment RUNTIME_USER
+        password: !environment RUNTIME_PASSWORD
+      api: True
+      browser: True
+    junctions:
+    - junction_point: &quot;/samljct&quot;
+      junction_type: &quot;ssl&quot;
+      server_hostname: &quot;isva-idp-runtime&quot;
+      server_port: &quot;9443&quot;
+      tfim_sso: &quot;yes&quot;
+    stanza_configuration:
+    - stanza: &quot;server&quot;
+      entry_id: &quot;web-host-name&quot;
+      value: &quot;www.myidp.ibm.com&quot;
+      operation: &quot;update&quot;
+    - stanza: &quot;step-up&quot;
+      entry_id: &quot;verify-step-up-user&quot;
+      value: &quot;no&quot;
+      operation: &quot;update&quot;
+    - stanza: &quot;session&quot;
+      entry_id: &quot;user-session-ids&quot;
+      value: &quot;yes&quot;
+      operation: &quot;update&quot;
+    - stanza: &quot;session&quot;
+      entry_id: &quot;inactive-timeout&quot;
+      value: &quot;1800&quot;
+      operation: &quot;update&quot;
+    - stanza: &quot;session&quot;
+      entry_id: &quot;create-unauth-sessions&quot;
+      value: &quot;yes&quot;
+      operation: &quot;update&quot;
+    - stanza: &quot;junction:/isam&quot;
+      operation: &quot;add&quot;
+    - stanza: &quot;junction:/isam&quot;
+      operation: &quot;add&quot;
+      entry_id: &quot;reset-cookies-list&quot;
+      value: &quot;*ac.uuid,*JSESSIONID&quot;
+    - stanza: &quot;TAM_CRED_ATTRS_SVC&quot;
+      operation: &quot;add&quot;
+      entry_id: &quot;eperson&quot;
+      value: &quot;azn_cred_registry_id&quot;
+    - stanza: &quot;TAM_CRED_ATTRS_SVC:eperson&quot;   
+      operation: &quot;add&quot;
+    - stanza: &quot;TAM_CRED_ATTRS_SVC:eperson&quot; 
+      entry_id: &quot;emailAddress&quot;
+      value: &quot;mail&quot;
+      operation: &quot;add&quot;
+    - stanza: &quot;TAM_CRED_ATTRS_SVC:eperson&quot; 
+      operation: &quot;add&quot;
+      entry_id: &quot;firstName&quot;
+      value: &quot;cn&quot;
+    - stanza: &quot;TAM_CRED_ATTRS_SVC:eperson&quot; 
+      operation: &quot;add&quot;
+      entry_id: &quot;lastName&quot;
+      value: &quot;sn&quot;
+      operation: &quot;add&quot;
+    - stanza: &quot;tfim-cluster:samljct&quot;
+      operation: &quot;add&quot;
+    - stanza: &quot;tfim-cluster:samljct&quot;
+      operation: &quot;add&quot;
+      entry_id: &quot;server&quot;
+      value: &quot;9,https://isva-idp-runtime:9443/TrustServerWST13/services/RequestSecurityToken&quot;
+    - stanza: &quot;tfim-cluster:samljct&quot;
+      operation: &quot;add&quot;
+      entry_id: &quot;ssl-keyfile&quot;
+      value: &quot;pdsrv.p12&quot;
+    - stanza: &quot;tfim-cluster:samljct&quot;
+      operation: &quot;add&quot;
+      entry_id: &quot;ssl-keyfile-stash&quot;
+      value: &quot;pdsrv.sth&quot;
+    - stanza: &quot;tfim-cluster:samljct&quot;
+      operation: &quot;add&quot;
+      entry_id: &quot;handle-pool-size&quot;
+      value: &quot;10&quot;
+    - stanza: &quot;tfim-cluster:samljct&quot;
+      operation: &quot;add&quot;
+      entry_id: &quot;handle-idle-timeout&quot;
+      value: &quot;240&quot;
+    - stanza: &quot;tfim-cluster:samljct&quot;
+      operation: &quot;add&quot;
+      entry_id: &quot;timeout&quot;
+      value: &quot;240&quot;
+    - stanza: &quot;tfim-cluster:samljct&quot;
+      operation: &quot;add&quot;
+      entry_id: &quot;basic-auth-user&quot;
+      value: !environment RUNTIME_USER
+    - stanza: &quot;tfim-cluster:samljct&quot;
+      operation: &quot;add&quot;
+      entry_id: &quot;basic-auth-passwd&quot;
+      value: !environment RUNTIME_PASSWORD
+    - stanza: &quot;tfimsso:/samljct&quot;
+      operation: &quot;add&quot;
+    - stanza: &quot;tfimsso:/samljct&quot;
+      operation: &quot;add&quot;
+      entry_id: &quot;token-type&quot;
+      value: &quot;http://docs.oasis-open.org/wss/oasis-wss-saml-token-profile-1.1#SAMLV2.0&quot;
+    - stanza: &quot;tfimsso:/samljct&quot;
+      operation: &quot;add&quot;
+      entry_id: &quot;applies-to&quot;
+      value: &quot;http://appliesto/saml20&quot;
+    - stanza: &quot;tfimsso:/samljct&quot;
+      operation: &quot;add&quot;
+      entry_id: &quot;renewal-window&quot;
+      value: &quot;15&quot;
+    - stanza: &quot;tfimsso:/samljct&quot;
+      operation: &quot;add&quot;
+      entry_id: &quot;preserve-xml-token&quot;
+      value: &quot;false&quot;
+    - stanza: &quot;tfimsso:/samljct&quot;
+      operation: &quot;add&quot;
+      entry_id: &quot;tfim-cluster-name&quot;
+      value: &quot;samljct&quot;
+    - stanza: &quot;tfimsso:/samljct&quot;
+      operation: &quot;add&quot;
+      entry_id: &quot;token-transmit-type&quot;
+      value: &quot;header&quot;
+    - stanza: &quot;tfimsso:/samljct&quot;
+      operation: &quot;add&quot;
+      entry_id: &quot;token-transmit-name&quot;
+      value: &quot;SAMLAssertion&quot;
+    - stanza: &quot;tfimsso:/samljct&quot;
+      operation: &quot;add&quot;
+      entry_id: &quot;one-time-token&quot;
+      value: &quot;true&quot;
+    - stanza: &quot;tfimsso:/samljct&quot;
+      operation: &quot;add&quot;
+      entry_id: &quot;token-collection-size&quot;
+      value: &quot;1&quot;
+    - stanza: &quot;oidc:default&quot;
+      operation: &quot;add&quot;
+    - stanza: &quot;oidc:default&quot;
+      operation: &quot;add&quot;
+      entry_id: &quot;redirect-uri-host&quot;
+      value: &quot;https://www.myidp.ibm.com&quot;
+    - stanza: &quot;oidc:default&quot;
+      operation: &quot;add&quot;
+      entry_id: &quot;discovery-endpoint&quot;
+      value: &quot;https://www.myidp.ibm.com/mga/sps/oauth/oauth20/metadata/OIDCDefinition&quot;
+    - stanza: &quot;oidc:default&quot;
+      operation: &quot;add&quot;
+      entry_id: &quot;client-id&quot;
+      value: &quot;websealclientID&quot;
+    - stanza: &quot;oidc:default&quot;
+      operation: &quot;add&quot;
+      entry_id: &quot;client-secret&quot;
+      value: !environment WEBSEAL_OIDC_CLIENT_SECRET
+    - stanza: &quot;oidc:default&quot;
+      operation: &quot;add&quot;
+      entry_id: &quot;response-type&quot;
+      value: &quot;id_token token&quot;
+    - stanza: &quot;oidc:default&quot;
+      operation: &quot;add&quot;
+      entry_id: &quot;mapped-identity&quot;
+      value: &quot;{iss}/{sub}&quot;
+    - stanza: &quot;oidc:default&quot;
+      operation: &quot;add&quot;
+      entry_id: &quot;external-user&quot;
+      value: &quot;true&quot;
+access_control:
+  authentication:
+    policies:
+    - name: &quot;Username Password&quot;
+      description: &quot;Username and password authentication policy.&quot;
+      enabled: true
+      uri: &quot;urn:ibm:security:authentication:asf:password&quot;
+      policy: &quot;&lt;Policy xmlns=\&quot;urn:ibm:security:authentication:policy:1.0:schema\&quot; PolicyId=\&quot;urn:ibm:security:authentication:asf:password\&quot;&gt;&lt;Description&gt;Username and password authentication policy.&lt;/Description&gt;&lt;Step type=\&quot;Authenticator\&quot;&gt;&lt;Authenticator AuthenticatorId=\&quot;urn:ibm:security:authentication:asf:mechanism:password\&quot;/&gt;&lt;/Step&gt;&lt;Actions&gt;&lt;Action On=\&quot;null\&quot; type=\&quot;null\&quot;&gt;&lt;AttributeAssignments/&gt;&lt;/Action&gt;&lt;/Actions&gt;&lt;/Policy&gt;&quot;
+    mechanisms:
+    - name: &quot;Username Password&quot;
+      type: &quot;Username Password&quot;
+      description: &quot;Username password authentication&quot;
+      uri: &quot;urn:ibm:security:authentication:asf:mechanism:password&quot;
+      properties:
+        usernamePasswordAuthentication.enableLastLogin: &quot;false&quot;
+        usernamePasswordAuthentication.loginFailuresPersistent: &quot;false&quot;
+        usernamePasswordAuthentication.maxServerConnections: &quot;16&quot;
+        usernamePasswordAuthentication.mgmtDomain: &quot;Default&quot;
+        usernamePasswordAuthentication.sslServerStartTLS: &quot;false&quot;
+        usernamePasswordAuthentication.useFederatedDirectoriesConfig: &quot;false&quot;
+        usernamePasswordAuthentication.userSearchFilter: &quot;(|(objectclass=ePerson)(objectclass=Person))&quot;
+        usernamePasswordAuthentication.ldapBindDN: !environment LDAP_BIND_DN
+        usernamePasswordAuthentication.ldapHostName: !environment IDP_LDAP_HOST
+        usernamePasswordAuthentication.ldapBindPwd: !environment LDAP_BIND_PW
+        usernamePasswordAuthentication.ldapPort: &quot;636&quot;
+        usernamePasswordAuthentication.sslEnabled: &quot;true&quot;
+        usernamePasswordAuthentication.sslTrustStore: &quot;lmi_trust_store&quot;
+      attributes:
+      - selector: &quot;mobile&quot;
+        name: &quot;mobileNumber&quot;
+        namespace: &quot;urn:ibm:security:authentication:asf:mechanism:password&quot;
+      - selector: &quot;mail&quot;
+        name: &quot;emailAddress&quot;
+        namespace: &quot;urn:ibm:security:authentication:asf:mechanism:password&quot;
+  api_protection:
+    definitions:
+    - name: &quot;OIDCDefinition&quot;
+      access_policy: &quot;AccessPolicyForPrompt&quot;
+      oidc:
+        enabled: True
+        alg: &quot;RS256&quot;
+        iss: &quot;https://www.myidp.ibm.com&quot;
+        poc: &quot;https://www.myidp.ibm.com/mga&quot;
+        dynamic_clients: true
+        issue_secret: True
+        lifetime: 3600
+        db: myidpkeys
+        cert: &quot;CN=idp,OU=Security,O=IBM,C=AU&quot;
+        oidc_Complaint: True
+        enc:
+          enabled: True
+          alg: &quot;RSA-OAEP-256&quot;
+          enc: &quot;A128CBC-HS256&quot;
+      attribute_sources:
+      - name: &quot;displayName&quot;
+        source: &quot;DisplayName&quot;
+      - name: &quot;phoneNumber&quot;
+        source: &quot;PhoneNumber&quot;
+      tcm_behavior: &quot;ALWAYS_PROMPT&quot;
+      grant_types:
+      - &quot;AUTHORIZATION_CODE&quot;
+      - &quot;CLIENT_CREDENTIALS&quot;
+      - &quot;RESOURCE_OWNER_PASSWORD_CREDENTIALS&quot;
+      - &quot;IMPLICIT_GRANT&quot;
+      - &quot;SAML_BEARER&quot;
+      - &quot;JWT_BEARER&quot;
+      - &quot;DEVICE&quot;
+    clients:
+    - name: &quot;IVIA Client&quot;
+      client_id: &quot;clientID&quot;
+      definition: &quot;OIDCDefinition&quot;
+      introspect_with_secret: True
+      client_secret: &quot;clientSecret&quot;
+      redirect_uris:
+      - &quot;https://www.mysp.ibm.com/isam/sps/oidc/rp/isamrp/redirect/partner&quot;
+      - &quot;https://www.mysp.ibm.com/isam/sps/oidc/rp/isamrp_implicit/redirect/partner&quot;
+      - &quot;https://www.mysp.ibm.com/isam/sps/oidc/rp/isamrp_code/redirect/partner&quot;
+      company_name: &quot;IBM&quot;
+      contact_person: &quot;Administrative&quot;
+    - name: &quot;WebSEAL Native RP Client&quot;
+      definition: &quot;OIDCDefinition&quot;
+      client_id: &quot;websealclientID&quot;
+      client_secret: !environment WEBSEAL_OIDC_CLIENT_SECRET
+      redirect_uris:
+      - &quot;https://www.mysp.ibm.com/pkmsoidc&quot;
+      company_name: &quot;IBM&quot;
+      contact_person: &quot;Administrative&quot;
+federation:
+  federations:
+  - name: &quot;saml20idp&quot;
+    protocol: &quot;SAML2_0&quot;
+    role: &quot;ip&quot;
+    export_metadata: &quot;idpmetadata.xml&quot;
+    webseal:
+      name: default
+      runtime:
+        username: !environment RUNTIME_USER
+        password: !environment RUNTIME_PASSWORD
+        hostname: isva-idp-runtime
+        port: 9443
+      reuse_acls: true
+      reuse_certs: true
+    configuration:
+      company_name: &quot;IdP Company&quot;
+      point_of_contact_url: &quot;https://www.myidp.ibm.com/isam&quot;
+      assertion_settings:
+        valid_before: 300
+        valid_after: 300
+      need_consent_to_federate: false
+      signature_settings:
+        validation_options:
+          validate_authn_request: true
+        signing_options:
+          sign_authn_response: true
+          sign_logout_request: true
+          sign_logout_response: true
+        signing_key_identifier:
+          store: &quot;myidpkeys&quot;
+          label: &quot;CN=idp,OU=Security,O=IBM,C=AU&quot;
+        key_info_elements:
+          include_x509_certificate_data: true
+          include_x509_subject_name: false
+          include_x509_subject_key_identifier: false
+          include_x509_issuer_details: false
+          include_public_key: false
+      identity_mapping:
+        active_delegate_id: &quot;default-map&quot;
+        properties:
+          mapping_rule: &quot;ip_saml20&quot;
+      extension_mapping:
+        active_delegate_id: &quot;skip-extension-map&quot;
+      name_id_format:
+        default: &quot;urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress&quot;
+      single_sign_on_service:
+      - binding: &quot;post&quot;
+      - binding: &quot;redirect&quot;
+      exclude_session_index_in_single_logout_request: false
+      single_logout_service:
+      - binding: &quot;post&quot;
+      - binding: &quot;redirect&quot;
+      encryption_settings:
+        decryption_key_identifier:
+          store: &quot;myidpkeys&quot;
+          label: &quot;CN=idp,OU=Security,O=IBM,C=AU&quot;
+      message_valid_time: 300
+      session_timeout: 7200
+  sts:
+    chain_templates:
+    - name: &quot;UsernameTokentoSAML20&quot;
+      description: &quot;Maps from UsernameToken to SAML20&quot;
+      modules:
+      - id: &quot;Default UserNameToken&quot;
+        mode: &quot;validate&quot;
+      - id: &quot;Default Map Module&quot;
+        mode: &quot;map&quot;
+      - id: &quot;Default SAML 2.0 Token&quot;
+        mode: &quot;issue&quot;
+    - name: &quot;STSUUtoSTSUU&quot;
+      description: &quot;STSUU to STSUU&quot;
+      modules:
+      - id: &quot;Default STSUU&quot;
+        mode: &quot;validate&quot;
+      - id: &quot;Default Map Module&quot;
+        mode: &quot;map&quot;
+      - id: &quot;Default STSUU&quot;
+        mode: &quot;issue&quot;
+    - name: &quot;IVCredsToSAML20JunctionExample&quot;
+      description: &quot;IVCredsToSAML20JunctionExample&quot;
+      modules:
+      - id: &quot;Default IVCred Token&quot;
+        mode: &quot;validate&quot;
+      - id: &quot;Default Map Module&quot;
+        mode: &quot;map&quot;
+      - id: &quot;Default SAML 2.0 Token&quot;
+        mode: &quot;issue&quot;
+    - name: &quot;STSUULDAPAttributeMapper&quot;
+      description: &quot;Maps STSUU to another STSUU reading in LDAP attributes&quot;
+      modules:
+      - id: &quot;Default STSUU&quot;
+        mode: &quot;validate&quot;
+      - id: &quot;Default Map Module&quot;
+        mode: &quot;map&quot;
+      - id: &quot;Default Attribute Mapping Module&quot;
+        mode: &quot;map&quot;
+      - id: &quot;Default Map Module&quot;
+        mode: &quot;map&quot;
+      - id: &quot;Default STSUU&quot;
+        mode: &quot;issue&quot;
+    - name: &quot;SAML20tpSAML20&quot;
+      description: &quot;Maps from SAML20 to SAML20&quot;
+      modules:
+      - id: &quot;Default SAML 2.0 Token&quot;
+        mode: &quot;validate&quot;
+      - id: &quot;Default Map Module&quot;
+        mode: &quot;map&quot;
+      - id: &quot;Default SAML 2.0 Token&quot;
+        mode: &quot;issue&quot;
+    chains:
+    - name: &quot;SAML20ToSAML20Chain&quot;
+      description: &quot;Chain for saml20 to saml20&quot;
+      chain_template: &quot;SAML20tpSAML20&quot;
+      request_type: &quot;validate&quot;
+      applies_to:
+        address: &quot;http://appliesto/saml20&quot;
+      issuer:
+        address: &quot;http://issuer/saml20&quot;
+      sign_responses: false
+      properties:
+        myself:
+        - name: &quot;com.tivoli.am.fim.sts.saml.2.0.assertion.replay.validation&quot;
+          index: 0
+          value:
+          - &quot;false&quot;
+        - name: &quot;map.rule.reference.name&quot;
+          index: 1
+          value:
+          - &quot;saml20_to_saml20&quot;
+        - name: &quot;com.tivoli.am.fim.sts.saml.2.0.assertion.issuer&quot;
+          index: 2
+          value:
+          - &quot;https://www.myidp.ibm.com/newissuer&quot;
+        - name: &quot;com.tivoli.am.fim.sts.saml.2.0.assertion.pretime.valid&quot;
+          index: 2
+          value:
+          - &quot;60&quot;
+        - name: &quot;com.tivoli.am.fim.sts.saml.2.0.assertion.posttime.valid&quot;
+          index: 2
+          value:
+          - &quot;60&quot;
+        partner:
+        - name: &quot;com.tivoli.am.fim.sts.saml.2.0.assertion.verify.signatures&quot;
+          index: 0
+          value:
+          - &quot;true&quot;
+        - name: &quot;com.tivoli.am.fim.sts.saml.2.0.assertion.keystore.alias&quot;
+          index: 0
+          value:
+          - &quot;true&quot;
+        - name: &quot;com.tivoli.am.fim.sts.saml.2.0.WantMultipleAttributeStatements&quot;
+          index: 0
+          value:
+          - &quot;false&quot;
+        - name: &quot;com.tivoli.am.fim.sts.saml.2.0.assertion.default.nameidformat&quot;
+          index: 0
+          value:
+          - &quot;urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress&quot;
+        - name: &quot;com.tivoli.am.fim.sts.saml.2.0.DecryptionKeyIdentifier.db&quot;
+          index: 0
+          value:
+          - &quot;myidpkeys&quot;
+        - name: &quot;com.tivoli.am.fim.sts.saml.2.0.DecryptionKeyIdentifier.cert&quot;
+          index: 0
+          value:
+          - &quot;CN=idp,OU=Security,O=IBM,C=AU&quot;
+        - name: &quot;com.tivoli.am.fim.sts.saml.2.0.map.unknown.alias&quot;
+          index: 0
+          value:
+          - &quot;false&quot;
+        - name: &quot;com.tivoli.am.fim.sts.saml.2.0.ValidateKeyIdentifier.db&quot;
+          index: 0
+          value:
+          - &quot;myidpkeys&quot;
+        - name: &quot;com.tivoli.am.fim.sts.saml.2.0.ValidateKeyIdentifier.cert&quot;
+          index: 0
+          value:
+          - &quot;CN=idp,OU=Security,O=IBM,C=AU&quot;
+        - name: &quot;com.tivoli.am.fim.sts.saml.2.0.assertion.attribute.types&quot;
+          index: 2
+          value:
+          - &quot;*&quot;
+        - name: &quot;com.tivoli.am.fim.sts.saml.2.0.assertion.sign&quot;
+          index: 2
+          value:
+          - &quot;true&quot;
+        - name: &quot;com.tivoli.am.fim.sts.saml.2.0.SigningKeyIdentifier.db&quot;
+          index: 2
+          value:
+          - &quot;myidpkeys&quot;
+        - name: &quot;com.tivoli.am.fim.sts.saml.2.0.SigningKeyIdentifier.cert&quot;
+          index: 2
+          value:
+          - &quot;CN=idp,OU=Security,O=IBM,C=AU&quot;
+        - name: &quot;com.tivoli.am.fim.sts.saml.2.0.WantMultipleAttributeStatements&quot;
+          index: 2
+          value:
+          - &quot;false&quot;
+        - name: &quot;com.tivoli.am.fim.sts.saml.2.0.assertion.signature.include.cert.data&quot;
+          index: 2
+          value:
+          - &quot;true&quot;
+        - name: &quot;com.tivoli.am.fim.sts.saml.2.0.assertion.signature.include.public.key&quot;
+          index: 2
+          value:
+          - &quot;false&quot;
+        - name: &quot;com.tivoli.am.fim.sts.saml.2.0.assertion.signature.include.subject.name&quot;
+          index: 2
+          value:
+          - &quot;false&quot;
+        - name: &quot;com.tivoli.am.fim.sts.saml.2.0.assertion.signature.include.subject.keyid&quot;
+          index: 2
+          value:
+          - &quot;false&quot;
+        - name: &quot;com.tivoli.am.fim.sts.saml.2.0.assertion.signature.include.issuer.details&quot;
+          index: 2
+          value:
+          - &quot;false&quot;
+    - name: &quot;UsernameTokentoSAML2.0Chain&quot;
+      description: &quot;Chain for UsernameToken to SAML20&quot;
+      chain_template: &quot;UsernameTokentoSAML20&quot;
+      request_type: &quot;validate&quot;
+      applies_to:
+        address: &quot;http://appliesto/saml20&quot;
+      issuer:
+        address: &quot;http://issuer/username&quot;
+      sign_responses: false
+      properties:
+        partner:
+        - name: &quot;username.validate.freshness&quot;
+          index: 0
+          value: 
+          - &quot;false&quot;
+        - name: &quot;com.tivoli.am.fim.sts.saml.2.0.assertion.attribute.types&quot;
+          index: 1
+          value:
+          - &quot;*&quot;
+        - name: &quot;com.tivoli.am.fim.sts.saml.2.0.assertion.sign&quot;
+          index: 1
+          value:
+          - &quot;true&quot;
+        - name: &quot;com.tivoli.am.fim.sts.saml.2.0.SigningKeyIdentifier.db&quot;
+          index: 1
+          value:
+          - &quot;myidpkeys&quot;
+        - name: &quot;com.tivoli.am.fim.sts.saml.2.0.SigningKeyIdentifier.cert&quot;
+          index: 1
+          value:
+          - &quot;CN=idp,OU=Security,O=IBM,C=AU&quot;
+        - name: &quot;com.tivoli.am.fim.sts.saml.2.0.SignatureAlgorithm&quot;
+          index: 1
+          value:
+          - &quot;RSA-SHA512&quot;
+        - name: &quot;com.tivoli.am.fim.sts.saml.2.0.WantMultipleAttributeStatements&quot;
+          index: 1
+          value:
+          - &quot;false&quot;
+        - name: &quot;com.tivoli.am.fim.sts.saml.2.0.assertion.signature.include.cert.data&quot;
+          index: 1
+          value:
+          - &quot;true&quot;
+        - name: &quot;com.tivoli.am.fim.sts.saml.2.0.assertion.signature.include.public.key&quot;
+          index: 1
+          value:
+          - &quot;false&quot;
+        - name: &quot;com.tivoli.am.fim.sts.saml.2.0.assertion.signature.include.subject.name&quot;
+          index: 1
+          value:
+          - &quot;false&quot;
+        - name: &quot;com.tivoli.am.fim.sts.saml.2.0.assertion.signature.include.subject.keyid&quot;
+          index: 1
+          value:
+          - &quot;false&quot;
+        - name: &quot;com.tivoli.am.fim.sts.saml.2.0.assertion.signature.include.issuer.details&quot;
+          index: 1
+          value:
+          - &quot;false&quot;
+        myself:
+        - name: &quot;username.skip.password.validation&quot;
+          index: 0
+          value: 
+          - &quot;false&quot;
+        - name: &quot;username.password.validator&quot;
+          index: 0
+          value:
+          - &quot;TAMRD&quot;
+        - name: &quot;username.server.connection.id&quot;
+          index: 0
+          value:
+          - &quot;idp-ldap&quot;
+        - name: &quot;username.tamrd.management.domain&quot;
+          index: 0
+          value:
+          - &quot;Default&quot;
+        - name: &quot;username.tamrd.use.federated.directories.config&quot;
+          index: 0
+          value:
+          - &quot;false&quot;
+        - name: &quot;username.tamrd.login.failures.persistent&quot;
+          index: 0
+          value:
+          - &quot;false&quot;
+        - name: &quot;username.tamrd.maximum.server.connections&quot;
+          index: 0
+          value:
+          - &quot;16&quot;
+        - name: &quot;map.rule.reference.name&quot;
+          index: 1
+          value:
+          - &quot;ut_to_saml20&quot;
+        - name: &quot;map.rule.type&quot;
+          index: 1
+          value:
+          - &quot;JAVASCRIPT&quot;
+        - name: &quot;com.tivoli.am.fim.sts.saml.2.0.assertion.issuer&quot;
+          index: 2
+          value:
+          - &quot;https://www.myidp.ibm.com/isam/sps/saml20idp/saml20&quot;
+        - name: &quot;com.tivoli.am.fim.sts.saml.2.0.assertion.pretime.valid&quot;
+          index: 2
+          value:
+          - &quot;3600&quot;
+        - name: &quot;com.tivoli.am.fim.sts.saml.2.0.assertion.posttime.valid&quot;
+          index: 2
+          value:
+          - &quot;3600&quot;
+    - name: &quot;STSUUMapper&quot;
+      description: &quot;STSUUMapper&quot;
+      chain_template: &quot;STSUULDAPAttributeMapper&quot;
+      request_type: &quot;validate&quot;
+      applies_to:
+        address: &quot;http://stsuu/appliesto&quot;
+      issuer:
+        address: &quot;http://stsuu/issuer&quot;
+      properties:
+        myself:
+        - name: &quot;map.rule.type&quot;
+          index: 1
+          value:
+          - &quot;JAVASCRIPT&quot;
+        - name: &quot;map.rule.reference.name&quot;
+          index: 1
+          value: 
+          - &quot;ip_pre_ldap&quot;
+        - name: &quot;map.rule.type&quot;
+          index: 3
+          value:
+          - &quot;JAVASCRIPT&quot;
+        - name: &quot;map.rule.reference.name&quot;
+          index: 3
+          value:
+          - &quot;ip_post_ldap&quot;
+    - name: &quot;STSUUAttributeMapper&quot;
+      description: &quot;STSUUAttributeMapper&quot;
+      chain_template: &quot;STSUUtoSTSUU&quot;
+      request_type: &quot;validate&quot;
+      applies_to:
+        address: &quot;http://appliesto/stsuu&quot;
+      issuer:
+        address: &quot;http://issuer/stsuu&quot;
+      properties:
+        attribute_mapping:
+        - name: &quot;displayName&quot;
+          attribute: &quot;DisplayName&quot;
+        - name: &quot;homePhone&quot;
+          attribute: &quot;HomePhone&quot;
+        myself:
+        - name: &quot;map.rule.type&quot;
+          index: 1
+          value: 
+          - &quot;JAVASCRIPT&quot;
+        - name: &quot;map.rule.reference.name&quot;
+          index: 1
+          value:
+          - &quot;stsuutostsuu&quot;
+    - name: &quot;IVCredToSAML20Chain&quot;
+      description: &quot;IVCredToSAML20Chain&quot;
+      chain_template: &quot;IVCredsToSAML20JunctionExample&quot;
+      request_type: &quot;issue(Oasis)&quot;
+      applies_to:
+        address: &quot;http://appliesto/saml20&quot;
+      issuer:
+        address: &quot;amwebrte-sts-client&quot;
+      token_type: &quot;SAML 2.0&quot;
+      properties:
+        myself:
+        - name: &quot;map.rule.type&quot;
+          index: 1
+          value:
+          - &quot;JAVASCRIPT&quot;
+        - name: &quot;map.rule.reference.name&quot;
+          index: 1
+          value: 
+          - &#39;saml20_ivc_to_saml20&#39;
+        - name: &quot;com.tivoli.am.fim.sts.saml.2.0.assertion.issuer&quot;
+          index: 2
+          value:
+          - &quot;https://www.myidp.ibm.com/isam/sps/saml20idp/saml20&quot;
+        - name: &quot;com.tivoli.am.fim.sts.saml.2.0.assertion.pretime.valid&quot;
+          index: 2
+          value:
+          - &quot;3600&quot;
+        - name: &quot;com.tivoli.am.fim.sts.saml.2.0.assertion.posttime.valid&quot;
+          index: 2
+          value:
+          - &quot;3600&quot;
+        partner:
+        - name: &quot;ivcred.verify.signatures&quot;
+          index: 0
+          value:
+          - &quot;false&quot;
+        - name: &quot;com.tivoli.am.fim.sts.saml.2.0.assertion.attribute.types&quot;
+          index: 2
+          value:
+          - &quot;*&quot;
+        - name: &quot;com.tivoli.am.fim.sts.saml.2.0.assertion.sign&quot;
+          index: 2
+          value:
+          - &quot;true&quot;
+        - name: &quot;com.tivoli.am.fim.sts.saml.2.0.SigningKeyIdentifier.db&quot;
+          index: 2
+          value:
+          - &quot;myidpkeys&quot;
+        - name: &quot;com.tivoli.am.fim.sts.saml.2.0.SigningKeyIdentifier.cert&quot;
+          index: 2
+          value:
+          - &quot;CN=idp,OU=Security,O=IBM,C=AU&quot;
+        - name: &quot;com.tivoli.am.fim.sts.saml.2.0.assertion.signature.include.subject.keyid&quot;
+          index: 2
+          value:
+          - &quot;true&quot;
+        - name: &quot;com.tivoli.am.fim.sts.saml.2.0.assertion.signature.include.public.key&quot;
+          index: 2
+          value:
+          - &quot;true&quot;
+        - name: &quot;com.tivoli.am.fim.sts.saml.2.0.assertion.signature.include.issuer.details&quot;
+          index: 2
+          value:
+          - &quot;true&quot;
+        - name: &quot;com.tivoli.am.fim.sts.saml.2.0.assertion.signature.include.subject.name&quot;
+          index: 2
+          value:
+          - &quot;true&quot;
+        - name: &quot;com.tivoli.am.fim.sts.saml.2.0.assertion.signature.include.cert.data&quot;
+          index: 2
+          value:
+          - &quot;true&quot;
+        - name: &quot;com.tivoli.am.fim.sts.saml.2.0.SignatureAlgorithm&quot;
+          index: 2
+          value:
+          - &quot;RSA-SHA512&quot;
+        - name: &quot;com.tivoli.am.fim.sts.saml.2.0.DigestAlgorithm&quot;
+          index: 2
+          value:
+          - &quot;SHA256&quot;
+        - name: &quot;com.tivoli.am.fim.sts.saml.2.0.EncryptionKeyIdentifier.db&quot;
+          index: 2
+          value:
+          - &quot;&quot;
+        - name: &quot;com.tivoli.am.fim.sts.saml.2.0.EncryptionKeyIdentifier.cert&quot;
+          index: 2
+          value:
+          - &quot;&quot;
+        - name: &quot;com.tivoli.am.fim.sts.saml.2.0.EncryptAssertions&quot;
+          index: 2
+          value:
+          - &quot;false&quot;
+        - name: &quot;com.tivoli.am.fim.sts.saml.2.0.EncryptAllAttributes&quot;
+          index: 2
+          value:
+          - &quot;false&quot;
+        - name: &quot;com.tivoli.am.fim.sts.saml.2.0.EncryptNameIdentifiers&quot;
+          index: 2
+          value:
+          - &quot;false&quot;
+        - name: &quot;com.tivoli.am.fim.sts.saml.2.0.BlockEncryptionAlgorithm&quot;
+          index: 2
+          value:
+          - &quot;TRIPLEDES&quot;
+        - name: &quot;com.tivoli.am.fim.sts.saml.2.0.EncryptionKeyTransportAlgorithm&quot;
+          index: 2
+          value:
+          - &quot;RSA-OEAP&quot;
+        - name: &quot;com.tivoli.am.fim.sts.saml.2.0.assertion.SubjectConfirmationMethod&quot;
+          index: 2
+          value:
+          - &quot;urn:oasis:names:tc:SAML:2.0:cm:bearer&quot;
+</pre></div>
+</div>
+</details></section>
+<section id="sp-configuration">
+<span id="example-sp-yaml"></span><h3>SP Configuration:<a class="headerlink" href="#sp-configuration" title="Link to this heading"></a></h3>
+<details class="summary-click-to-see-the-yaml-configuration">
+<summary>Click to see the YAML configuration.</summary><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>container:
+  admin_cfg:
+    session_timeout: 720
+  management_authorization:
+    authorization_enforcement: True
+    roles:
+    - operation: &quot;update&quot;
+      name: &quot;Configuration Service&quot;
+      users:
+      - name: &quot;cfgsvc&quot;
+        type: &quot;local&quot;
+      features:
+      - name: &quot;shared_volume&quot;
+        access: &quot;w&quot;
+  ssl_certificates:
+  - name: &quot;lmi_trust_store&quot;
+    signer_certificates:
+    - &quot;postgresql.pem&quot;
+    - &quot;ldap.pem&quot;
+  - name: &quot;rt_profile_keys&quot;
+    signer_certificates:
+    - &quot;postgresql.pem&quot;
+    load_certificates:
+    - label: &quot;OP WebSEAL Cert&quot;
+      server: &quot;isva-idp-webseal&quot;
+      port: 9443
+  - name: &quot;myspkeys&quot;
+    personal_certificates:
+    - p12_file: &quot;spkeys.p12&quot;
+      name: myspkey
+      password: !environment SPKEYSP12_SECRET
+  cluster:
+    runtime_database:
+      host: !environment SP_HVDB_HOST
+      port: !environment HVDB_PORT
+      type: &quot;postgresql&quot;
+      user: !environment HVDB_USER
+      password: !environment HVDB_PW
+      ssl: True
+      db_name: &quot;isva&quot;
+  activation: #Activation codes
+    webseal: !environment IVIA_BASE_CODE
+    access_control: !environment IVIA_AAC_CODE
+    federation: !environment IVIA_FED_CODE
+  mapping_rules:
+  - type: &quot;saml2&quot;
+    files:
+    - &quot;mapping_rules/sp/sp_saml20_dynamic_group.js&quot;
+    - &quot;mapping_rules/sp/sp_saml20.js&quot;
+  - type: &quot;oidc&quot;
+    files:
+    - &quot;mapping_rules/sp/oidc_adv_claims.js&quot;
+    - &quot;mapping_rules/sp/oidc_adv.js&quot;
+  advanced_configuration:
+  - name: &quot;live.demos.enabled&quot;
+    value: &quot;true&quot;
+  - name: &quot;live.demos.settings&quot;
+    value: !environment SP_LIVE_DEMO_CONFIG
+  point_of_contact:
+    active_profile: &quot;Non-Access Manager Username, Access Manager groups and extended attributes&quot;
+webseal:
+  runtime:
+    policy_server: &quot;ldap&quot;
+    user_registry: &quot;ldap&quot;
+    ldap:
+      host: !environment SP_LDAP_HOST
+      port: !environment LDAP_PORT
+      dn: !environment LDAP_BIND_DN
+      dn_password: !environment LDAP_BIND_PW
+      key_file: &quot;lmi_trust_store&quot;
+    clean_ldap: True
+    domain: &quot;Default&quot;
+    admin_user: &quot;sec_master&quot;
+    admin_password: !environment LDAP_SEC_PW
+    admin_cert_lifetime: 1460
+    ssl_compliance: &quot;fips&quot;
+  reverse_proxy:
+  - name: &quot;default&quot;
+    host: &quot;isva-sp-webseal&quot;
+    http:
+      enabled: &quot;no&quot;
+    https:
+      enabled: &quot;yes&quot;
+    domain: &quot;Default&quot;
+    ldap:
+      ssl: &quot;yes&quot;
+      port: !environment LDAP_PORT
+      key_file: &quot;lmi_trust_store&quot;
+    stanza_configuration:
+    - stanza: &quot;server&quot;
+      entry_id: &quot;web-host-name&quot;
+      value: &quot;www.mysp.ibm.com&quot;
+      operation: &quot;update&quot;
+    - stanza: &quot;step-up&quot;
+      entry_id: &quot;verify-step-up-user&quot;
+      value: &quot;no&quot;
+      operation: &quot;update&quot;
+    - stanza: &quot;session&quot;
+      entry_id: &quot;user-session-ids&quot;
+      value: &quot;yes&quot;
+      operation: &quot;update&quot;
+    - stanza: &quot;session&quot;
+      entry_id: &quot;inactive-timeout&quot;
+      value: &quot;1800&quot;
+      operation: &quot;update&quot;
+    - stanza: &quot;session&quot;
+      entry_id: &quot;create-unauth-sessions&quot;
+      value: &quot;yes&quot;
+      operation: &quot;update&quot;
+    - stanza: &quot;junction:/isam&quot;
+      operation: &quot;add&quot;
+    - stanza: &quot;junction:/isam&quot;
+      operation: &quot;add&quot;
+      entry_id: &quot;reset-cookies-list&quot;
+      value: &quot;*ac.uuid,*JSESSIONID&quot;
+  pdadmin:
+    users:
+    - username: &quot;anonymous&quot;
+      dn: &quot;cn=anonymous,dc=ibm,dc=com&quot;
+      password: !environment FED_ANON_PASSWORD
+    - username: &quot;testuser&quot;
+      dn: &quot;cn=testuser,dc=ibm,dc=com&quot;
+      password: !environment TEST_PASSWORD
+    groups:
+    - name: &quot;testgroup&quot;
+      dn: &quot;cn=testgroup,dc=ibm,dc=com&quot;
+    - name: &quot;testgroup2&quot;
+      dn: &quot;cn=testgroup2,dc=ibm,dc=com&quot;
+    reverse_proxies:
+    - host: &quot;isva-sp-webseal&quot;
+      instance: &quot;default&quot;
+      acls:
+      - name: &quot;default-webseal&quot;
+        junctions:
+        - &quot;/isam/mobile-demo&quot;
+federation:
+  federations:
+  - name: &quot;saml20sp&quot;
+    protocol: &quot;SAML2_0&quot;
+    role: &quot;sp&quot;
+    import_partners:
+    - name: &quot;idp_partner&quot;
+      metadata: &quot;idpmetadata.xml&quot;
+    export_metadata: &quot;spmetadata.xml&quot;
+    webseal:
+      name: default
+      runtime:
+        username: !environment RUNTIME_USER
+        password: !environment RUNTIME_PASSWORD
+        hostname: isva-sp-runtime
+        port: 9443
+      reuse_acls: true
+      reuse_certs: true
+    configuration:
+      company_name: &quot;SP Company&quot;
+      point_of_contact_url: &quot;https://www.mysp.ibm.com/isam&quot;
+      assertion_settings:
+        valid_before: 300
+        valid_after: 300
+      need_consent_to_federate: false
+      signature_settings:
+        validation_options:
+          validate_authn_request: true
+        signing_options:
+          sign_authn_response: true
+          sign_logout_request: true
+          sign_logout_response: true
+        signing_key_identifier:
+          store: &quot;myspkeys&quot;
+          label: &quot;CN=sp,OU=Security,O=IBM,C=AU&quot;
+        key_info_elements:
+          include_x509_certificate_data: true
+          include_x509_subject_name: false
+          include_x509_subject_key_identifier: false
+          include_x509_issuer_details: false
+          include_public_key: false
+      identity_mapping:
+        active_delegate_id: &quot;default-map&quot;
+        properties:
+          mapping_rule: &quot;sp_saml20_dynamic_group&quot;
+      extension_mapping:
+        active_delegate_id: &quot;skip-extension-map&quot;
+      name_id_format:
+        default: &quot;urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress&quot;
+      assertion_consumer_services:
+      - binding: &quot;post&quot;
+        index: &quot;1&quot;
+        default: &quot;false&quot;
+      - binding: &quot;redirect&quot;
+        index: &quot;2&quot;
+        default: &quot;false&quot;
+      single_logout_service:
+      - binding: &quot;post&quot;
+      exclude_session_index_in_single_logout_request: false
+      encryption_settings:
+        decryption_key_identifier:
+          store: &quot;myspkeys&quot;
+          label: &quot;CN=sp,OU=Security,O=IBM,C=AU&quot;
+      message_valid_time: 300
+      session_timeout: 7200
+  - name: &quot;isvarp&quot;
+    protocol: &quot;OIDC10&quot;
+    role: &quot;rp&quot;
+    webseal:
+      name: default
+      runtime:
+        username: !environment RUNTIME_USER
+        password: !environment RUNTIME_PASSWORD
+        hostname: isva-sp-runtime
+        port: 9443
+    configuration:
+      redirect_uri_prefix: &quot;https://www.mysp.ibm.com/mga&quot;
+      response_types:
+      - &quot;code&quot;
+      - &quot;id_token&quot;
+      - &quot;token&quot;
+      identity_mapping:
+        active_delegate_id: &quot;default-map&quot;
+        properties:
+          mapping_rule: &quot;OIDCRP&quot;
+      advanced_configuration:
+        active_delegate_id: &quot;default-map&quot;
+        mapping_rule: &quot;oidc_adv_claims&quot;
+    partners:
+    - name: &quot;isva_op_partner&quot;
+      enabled: True
+      role: &quot;rp&quot;
+      configuration:
+        client_id: &quot;clientID&quot;
+        client_secret: &quot;clientSecret&quot;
+        basic_configuration:
+          active_delegate_id: &quot;metadataEndpointUrl&quot;
+          metadata_endpoint_url: &quot;https://isva-idp-webseal:9443/mga/sps/oauth/oauth20/metadata/OIDCDefinition&quot;
+        scope:
+        - &quot;openid&quot;
+        signature_algorithm: &quot;RS256&quot;
+        token_endpoint_auth_method: &quot;client_secret_basic&quot;
+        advance_configuration:
+          active_delegate_id: &quot;federation-config&quot;
+  - name: &quot;isvarp_implicit&quot;
+    protocol: &quot;OIDC10&quot;
+    role: &quot;rp&quot;
+    webseal:
+      name: default
+      runtime:
+        username: !environment RUNTIME_USER
+        password: !environment RUNTIME_PASSWORD
+        hostname: isva-sp-runtime
+        port: 9443
+    configuration:
+      redirect_uri_prefix: &quot;https://www.mysp.ibm.com/mga&quot;
+      response_types:
+      - &quot;id_token&quot;
+      - &quot;token&quot;
+      identity_mapping:
+        active_delegate_id: &quot;default-map&quot;
+        properties:
+          mapping_rule: &quot;OIDCRP&quot;
+      advanced_configuration:
+        active_delegate_id: &quot;default-map&quot;
+        mapping_rule: &quot;oidc_adv&quot;
+    partners:
+    - name: &quot;isva_op_partner&quot;
+      enabled: True
+      role: &quot;rp&quot;
+      configuration:
+        client_id: &quot;clientID&quot;
+        client_secret: &quot;clientSecret&quot;
+        basic_configuration:
+          active_delegate_id: &quot;metadataEndpointUrl&quot;
+          metadata_endpoint_url: &quot;https://isva-idp-webseal:9443/mga/sps/oauth/oauth20/metadata/OIDCDefinition&quot;
+        scope:
+        - &quot;openid&quot;
+        signature_algorithm: &quot;RS256&quot;
+        token_endpoint_auth_method: &quot;client_secret_basic&quot;
+        advance_configuration:
+          active_delegate_id: &quot;federation-config&quot;
+  - name: &quot;isvarp_code&quot;
+    protocol: &quot;OIDC10&quot;
+    role: &quot;rp&quot;
+    webseal:
+      name: default
+      runtime:
+        username: !environment RUNTIME_USER
+        password: !environment RUNTIME_PASSWORD
+        hostname: isva-sp-runtime
+        port: 9443
+    configuration:
+      redirect_uri_prefix: &quot;https://www.mysp.ibm.com/mga&quot;
+      response_types:
+      - &quot;code&quot;
+      identity_mapping:
+        active_delegate_id: &quot;default-map&quot;
+        properties:
+          mapping_rule: &quot;OIDCRP&quot;
+      advanced_configuration:
+        active_delegate_id: &quot;default-map&quot;
+        mapping_rule: &quot;oidc_adv&quot;
+    partners:
+    - name: &quot;isva_op_partner&quot;
+      enabled: True
+      role: &quot;rp&quot;
+      configuration:
+        client_id: &quot;clientID&quot;
+        client_secret: &quot;clientSecret&quot;
+        basic_configuration:
+          active_delegate_id: &quot;metadataEndpointUrl&quot;
+          metadata_endpoint_url: &quot;https://isva-idp-webseal:9443/mga/sps/oauth/oauth20/metadata/OIDCDefinition&quot;
+        scope:
+        - &quot;openid&quot;
+        signature_algorithm: &quot;RS256&quot;
+        token_endpoint_auth_method: &quot;client_secret_basic&quot;
+        advance_configuration:
+          active_delegate_id: &quot;federation-config&quot;
+</pre></div>
+</div>
+</details></section>
+<section id="example-idp-partner-yaml">
+<span id="idp-partner-configuration"></span><h3>IdP Partner Configuration:<a class="headerlink" href="#example-idp-partner-yaml" title="Link to this heading"></a></h3>
+<details class="summary-click-to-see-the-yaml-configuration">
+<summary>Click to see the YAML configuration.</summary><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">federation</span><span class="p">:</span>
+  <span class="n">federations</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;saml20idp&quot;</span>
+    <span class="n">import_partners</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;sp_partner&quot;</span>
+      <span class="n">metadata</span><span class="p">:</span> <span class="s2">&quot;spmetadata.xml&quot;</span>
+</pre></div>
+</div>
+</details></section>
+<section id="trying-it-out">
+<h3>Trying it out<a class="headerlink" href="#trying-it-out" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Create a test user using the demo User Self Care enrollment policy on the IdP deployment</p></li>
+<li><p>Test the Federated authentication:</p>
+<ul>
+<li><p>IdP initiated SSO</p></li>
+<li><p>SP initiated SSO</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to ibmvia-autoconf documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="appliance.html" class="btn btn-neutral float-right" title="Appliance Configuration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Lachlan Gleeson, IBM.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
